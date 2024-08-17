@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://df08kexb8a4cf"]
+
+[ext_resource type="Script" path="res://Objects/funnel.gd" id="1_cnsmf"]
+[ext_resource type="Texture2D" uid="uid://dookkcc2sl07d" path="res://Assets/Visuales/funnel.jpg" id="1_wriqa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvkgf"]
+size = Vector2(16, 16)
+
+[node name="Funnel" type="Area2D"]
+script = ExtResource("1_cnsmf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("1_wriqa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cvkgf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

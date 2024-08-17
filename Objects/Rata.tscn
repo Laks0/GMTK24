@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx0cq3st44k6t"]
+
+[ext_resource type="Script" path="res://Objects/rata.gd" id="1_c3rt5"]
+[ext_resource type="Texture2D" uid="uid://ddeqtn6yoegeq" path="res://Assets/Visuales/vector-pixel-art-rat-isolated-103769938-1586460681.jpg" id="1_vpego"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eelpw"]
+size = Vector2(14, 14)
+
+[node name="Rata" type="CharacterBody2D"]
+script = ExtResource("1_c3rt5")
+acceleration = 1000.0
+max_speed = 400.0
+
+[node name="Vector-pixel-art-rat-isolated-103769938-1586460681" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_vpego")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eelpw")
