@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://cthx82mouf30i"]
+[gd_scene load_steps=8 format=4 uid="uid://cthx82mouf30i"]
 
 [ext_resource type="Texture2D" uid="uid://5mjhb38nd64m" path="res://Assets/Visuales/tileset.png" id="1_1hrne"]
 [ext_resource type="PackedScene" uid="uid://bvd44oiy585sb" path="res://Objects/rata.tscn" id="2_tuot6"]
 [ext_resource type="PackedScene" uid="uid://d35v45n8k3ive" path="res://Objects/embudo.tscn" id="3_skxj1"]
 [ext_resource type="PackedScene" uid="uid://bv0v2xnggx4us" path="res://Objects/widener.tscn" id="4_hvi7g"]
+[ext_resource type="Script" path="res://Scripts/camara.gd" id="5_7fmv6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qd7dx"]
 texture = ExtResource("1_1hrne")
@@ -32,10 +33,12 @@ tile_set = SubResource("TileSet_ngq4g")
 [node name="Embudo" parent="." instance=ExtResource("3_skxj1")]
 position = Vector2(510, 250)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(533, -2)
-
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="widener" parent="." instance=ExtResource("4_hvi7g")]
 position = Vector2(676, 48)
+
+[node name="camara" type="Camera2D" parent="."]
+ignore_rotation = false
+position_smoothing_enabled = true
+script = ExtResource("5_7fmv6")
