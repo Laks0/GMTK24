@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://d35v45n8k3ive"]
+
+[ext_resource type="Texture2D" uid="uid://daaoksfr2eqpa" path="res://Assets/Visuales/embudo.jpeg" id="1_dfyot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiw4i"]
+size = Vector2(56, 56)
+
+[node name="Embudo" type="Node2D"]
+
+[node name="Embudo" type="Sprite2D" parent="."]
+rotation = 1.56998
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_dfyot")
+
+[node name="embudo_area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="embudo_colision" type="CollisionShape2D" parent="embudo_area"]
+shape = SubResource("RectangleShape2D_eiw4i")
+
+[node name="punta_embudo" type="Node2D" parent="."]
+position = Vector2(28, 0)

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvd44oiy585sb"]
+
+[ext_resource type="Script" path="res://Scripts/rata.gd" id="1_s7v4r"]
+[ext_resource type="Texture2D" uid="uid://c0l6pa3uhbasl" path="res://Assets/Visuales/rata.png" id="2_heoyc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w55nx"]
+size = Vector2(90, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kodh"]
+size = Vector2(90, 54)
+
+[node name="Rata" type="CharacterBody2D"]
+script = ExtResource("1_s7v4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_heoyc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w55nx")
+
+[node name="embudo_detector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="embudo_detector"]
+shape = SubResource("RectangleShape2D_6kodh")
+debug_color = Color(0.887957, 0.275738, 0.464366, 0.42)
+
+[connection signal="area_entered" from="embudo_detector" to="." method="_on_embudo_detector_area_entered"]

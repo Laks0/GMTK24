@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=4 uid="uid://cthx82mouf30i"]
+
+[ext_resource type="Texture2D" uid="uid://5mjhb38nd64m" path="res://Assets/Visuales/tileset.png" id="1_1hrne"]
+[ext_resource type="PackedScene" uid="uid://bvd44oiy585sb" path="res://Objects/rata.tscn" id="2_tuot6"]
+[ext_resource type="PackedScene" uid="uid://d35v45n8k3ive" path="res://Objects/embudo.tscn" id="3_skxj1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qd7dx"]
+texture = ExtResource("1_1hrne")
+texture_region_size = Vector2i(80, 80)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+0:2/0 = 0
+1:2/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ngq4g"]
+tile_size = Vector2i(80, 80)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_qd7dx")
+
+[node name="PrototypeLevel" type="Node2D"]
+
+[node name="Rata" parent="." instance=ExtResource("2_tuot6")]
+collision_mask = 3
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ngq4g")
+
+[node name="Embudo" parent="." instance=ExtResource("3_skxj1")]
+position = Vector2(510, 49)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(533, -2)
