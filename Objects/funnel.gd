@@ -1,11 +1,19 @@
-extends Area2D
+extends RigidBody2D
 class_name Funnel
 
-func _on_body_entered(body):
-	if body is Cat:
-		var dir = sign(body.velocity.x)
-		if dir == -1:
-			body.scale_factor *= .5
-		else:
-			body.scale_factor *= 2
-		body.position.x += dir * 64 * body.scale_factor
+func _physics_process(delta):
+	if not $Cooldown.is_stopped():
+		return
+	
+	if $BigSideCast.is_colliding() and $BigSideCast.get_collider() is Cat:
+		var cat := $BigSideCast.get_collider() as Cat
+		cat.scale_factor *= .5
+		cat.position.x = global_position.x - cat.scale_factor * 64 + 16
+		cat.position.y += 32 * cat.scale_factor
+		$Cooldown.start()
+	
+	if $SmallSideCast.is_colliding() and $SmallSideCast.get_collider() is Cat:
+		var cat := $SmallSideCast.get_collider() as Cat
+		cat.scale_factor *= 2
+		cat.position.x = global_position.x + cat.scale_factor * 64 + 16
+		$Cooldown.start()

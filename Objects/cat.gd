@@ -37,9 +37,9 @@ func follow_rat(delta):
 		velocity.x = lerp(velocity.x, 0.0, friction * delta)
 
 func patroll(delta):
-	if patroll_dir == 1 and not $RightFloorCast.is_colliding():
+	if patroll_dir == 1 and not $RightFloorCast.is_colliding() and is_on_floor():
 		patroll_dir = -1
-	if patroll_dir == -1 and not $LeftFloorCast.is_colliding():
+	if patroll_dir == -1 and not $LeftFloorCast.is_colliding() and is_on_floor():
 		patroll_dir = 1
 	
 	for cast : RayCast2D in $LeftWallCasts.get_children():
