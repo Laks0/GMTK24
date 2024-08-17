@@ -28,6 +28,7 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="big_embudo_detector"]
+visible = false
 shape = SubResource("RectangleShape2D_6kodh")
 debug_color = Color(0.887957, 0.275738, 0.464366, 0.42)
 
@@ -36,6 +37,7 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="small_embudo_detector"]
+visible = false
 shape = SubResource("RectangleShape2D_6kodh")
 debug_color = Color(0.887957, 0.275738, 0.464366, 0.42)
 
@@ -44,6 +46,7 @@ collision_layer = 2
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="entrada_widener"]
+visible = false
 light_mask = 2
 visibility_layer = 32
 shape = SubResource("RectangleShape2D_3qjva")
@@ -55,10 +58,21 @@ collision_layer = 2
 collision_mask = 32
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="salida_widener"]
+visible = false
 shape = SubResource("RectangleShape2D_3qjva")
 debug_color = Color(0.612363, 0.531588, 0.236578, 0.42)
+
+[node name="gato_detector" type="Area2D" parent="."]
+rotation = 0.0024593
+collision_layer = 2
+collision_mask = 64
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="gato_detector"]
+shape = SubResource("RectangleShape2D_3qjva")
+debug_color = Color(0.330542, 0.615769, 0.280437, 0.42)
 
 [connection signal="area_entered" from="big_embudo_detector" to="." method="_on_big_embudo_detector_area_entered"]
 [connection signal="area_entered" from="small_embudo_detector" to="." method="_on_small_embudo_detector_area_entered"]
 [connection signal="area_entered" from="entrada_widener" to="." method="_on_entrada_widener_area_entered"]
 [connection signal="area_entered" from="salida_widener" to="." method="_on_salida_widener_area_entered"]
+[connection signal="area_entered" from="gato_detector" to="." method="_on_gato_detector_area_entered"]

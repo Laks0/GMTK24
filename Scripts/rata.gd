@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const SPEED = 1000
+const SPEED = 500
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var paso_por_embudo:bool =false
 var tiempo_embudo:float = 0.1
@@ -49,3 +49,8 @@ func _on_salida_widener_area_entered(area):
 	if !paso_por_embudo:
 		scale.y=0.25
 		reset_embudo()
+
+
+func _on_gato_detector_area_entered(area):
+	print("QEPD RATA :C")
+	queue_free()

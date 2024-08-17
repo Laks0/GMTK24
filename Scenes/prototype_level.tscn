@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvd44oiy585sb" path="res://Objects/rata.tscn" id="2_tuot6"]
 [ext_resource type="PackedScene" uid="uid://d35v45n8k3ive" path="res://Objects/embudo.tscn" id="3_skxj1"]
 [ext_resource type="PackedScene" uid="uid://bv0v2xnggx4us" path="res://Objects/widener.tscn" id="4_hvi7g"]
-[ext_resource type="Script" path="res://Scripts/camara.gd" id="5_7fmv6"]
+[ext_resource type="PackedScene" uid="uid://c8pde5k44c3pj" path="res://Objects/gato.tscn" id="6_eow36"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qd7dx"]
 texture = ExtResource("1_1hrne")
@@ -18,12 +18,13 @@ texture_region_size = Vector2i(80, 80)
 [sub_resource type="TileSet" id="TileSet_ngq4g"]
 tile_size = Vector2i(80, 80)
 physics_layer_0/collision_layer = 2
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_mask = 67
 sources/0 = SubResource("TileSetAtlasSource_qd7dx")
 
 [node name="prototype_level" type="Node2D"]
 
 [node name="Rata" parent="." instance=ExtResource("2_tuot6")]
+position = Vector2(0, 253)
 collision_mask = 3
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -39,6 +40,9 @@ position = Vector2(510, 250)
 position = Vector2(676, 48)
 
 [node name="camara" type="Camera2D" parent="."]
+position = Vector2(764, 0)
 ignore_rotation = false
 position_smoothing_enabled = true
-script = ExtResource("5_7fmv6")
+
+[node name="gato_enemigo" parent="." instance=ExtResource("6_eow36")]
+position = Vector2(831, 28)

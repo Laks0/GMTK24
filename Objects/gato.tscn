@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8pde5k44c3pj"]
+
+[ext_resource type="Script" path="res://Objects/gato.gd" id="1_s0ivd"]
+[ext_resource type="Texture2D" uid="uid://cn32vh3q3l8os" path="res://Assets/Visuales/gato.jpeg" id="2_tp13s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ed26i"]
+size = Vector2(64, 48)
+
+[node name="gato_enemigo" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 3
+script = ExtResource("1_s0ivd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ed26i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_tp13s")
+
+[node name="rata_detector" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rata_detector"]
+shape = SubResource("RectangleShape2D_ed26i")
