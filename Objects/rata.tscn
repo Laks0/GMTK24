@@ -19,12 +19,21 @@ texture = ExtResource("2_heoyc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_w55nx")
 
-[node name="embudo_detector" type="Area2D" parent="."]
+[node name="big_embudo_detector" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="embudo_detector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="big_embudo_detector"]
 shape = SubResource("RectangleShape2D_6kodh")
 debug_color = Color(0.887957, 0.275738, 0.464366, 0.42)
 
-[connection signal="area_entered" from="embudo_detector" to="." method="_on_embudo_detector_area_entered"]
+[node name="small_embudo_detector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="small_embudo_detector"]
+shape = SubResource("RectangleShape2D_6kodh")
+debug_color = Color(0.887957, 0.275738, 0.464366, 0.42)
+
+[connection signal="area_entered" from="big_embudo_detector" to="." method="_on_big_embudo_detector_area_entered"]
+[connection signal="area_entered" from="small_embudo_detector" to="." method="_on_small_embudo_detector_area_entered"]

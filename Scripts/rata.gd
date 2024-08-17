@@ -1,13 +1,18 @@
 extends CharacterBody2D
-const SPEED = 300.0
+const SPEED = 1000
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+var paso_por_embudo:bool =false
+var tiempo_embudo:float = 0.1
 func _ready():
-	velocity.x=300
+	velocity.x=1000
 
 
 
 func _physics_process(delta):
+	tiempo_embudo -=delta
+	if tiempo_embudo <= 0.0:
+		tiempo_embudo = 0.25
+		paso_por_embudo = false
 	var x=1
 	velocity.y+=100
 	if not is_on_floor():
@@ -18,17 +23,17 @@ func _physics_process(delta):
 	velocity.x *=x
 
 
+func _on_big_embudo_detector_area_entered(area):
+	if !paso_por_embudo:
+		scale*=2
+		reset_embudo()
 
-func _on_embudo_detector_area_entered(area):
-	var parent = area.get_parent()
-	var punta_embudo = parent.get_node("punta_embudo")
-	var distancia = position.distance_to(punta_embudo.position)
-	print(distancia)
-	if distancia<=420:
-		print("A")
-		scale *=1.5
-		return
-	else:
-		print("B")
-		scale *=0.9
-		return
+func _on_small_embudo_detector_area_entered(area):
+	if !paso_por_embudo:
+		scale *=0.5
+		reset_embudo()
+
+
+func reset_embudo():
+	paso_por_embudo=true
+	tiempo_embudo=0.1

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK24"
-run/main_scene="res://Scenes/MainMenu.tscn"
+run/main_scene="res://Scenes/prototype_level.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -35,7 +35,8 @@ folder_colors={
 
 2d_physics/layer_1="Obstaculos"
 2d_physics/layer_2="Ratas"
-2d_physics/layer_3="Embudo "
+2d_physics/layer_3="big_Embudo "
+2d_physics/layer_4="small_Embudo"
 
 [rendering]
 
