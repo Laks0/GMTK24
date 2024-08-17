@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvd44oiy585sb"]
+[gd_scene load_steps=6 format=3 uid="uid://bvd44oiy585sb"]
 
 [ext_resource type="Script" path="res://Scripts/rata.gd" id="1_s7v4r"]
 [ext_resource type="Texture2D" uid="uid://c0l6pa3uhbasl" path="res://Assets/Visuales/rata.png" id="2_heoyc"]
@@ -9,6 +9,9 @@ size = Vector2(90, 54)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kodh"]
 size = Vector2(90, 54)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qjva"]
+size = Vector2(90, 54)
+
 [node name="Rata" type="CharacterBody2D"]
 script = ExtResource("1_s7v4r")
 
@@ -17,6 +20,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_heoyc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_w55nx")
 
 [node name="big_embudo_detector" type="Area2D" parent="."]
@@ -35,5 +39,26 @@ collision_mask = 8
 shape = SubResource("RectangleShape2D_6kodh")
 debug_color = Color(0.887957, 0.275738, 0.464366, 0.42)
 
+[node name="entrada_widener" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entrada_widener"]
+light_mask = 2
+visibility_layer = 32
+shape = SubResource("RectangleShape2D_3qjva")
+debug_color = Color(0.612363, 0.531588, 0.236578, 0.42)
+
+[node name="salida_widener" type="Area2D" parent="."]
+rotation = 0.0024593
+collision_layer = 2
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="salida_widener"]
+shape = SubResource("RectangleShape2D_3qjva")
+debug_color = Color(0.612363, 0.531588, 0.236578, 0.42)
+
 [connection signal="area_entered" from="big_embudo_detector" to="." method="_on_big_embudo_detector_area_entered"]
 [connection signal="area_entered" from="small_embudo_detector" to="." method="_on_small_embudo_detector_area_entered"]
+[connection signal="area_entered" from="entrada_widener" to="." method="_on_entrada_widener_area_entered"]
+[connection signal="area_entered" from="salida_widener" to="." method="_on_salida_widener_area_entered"]

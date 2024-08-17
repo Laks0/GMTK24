@@ -37,3 +37,15 @@ func _on_small_embudo_detector_area_entered(area):
 func reset_embudo():
 	paso_por_embudo=true
 	tiempo_embudo=0.1
+
+
+func _on_entrada_widener_area_entered(area):
+	if !paso_por_embudo:
+		scale.y *=4
+		reset_embudo()
+
+
+func _on_salida_widener_area_entered(area):
+	if !paso_por_embudo:
+		scale.y=0.25
+		reset_embudo()

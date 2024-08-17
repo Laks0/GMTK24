@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=426
+window/size/viewport_height=240
 window/size/mode=2
 window/stretch/mode="canvas_items"
 
@@ -37,6 +37,8 @@ folder_colors={
 2d_physics/layer_2="Ratas"
 2d_physics/layer_3="big_Embudo "
 2d_physics/layer_4="small_Embudo"
+2d_physics/layer_5="big_widener"
+2d_physics/layer_6="small_widener"
 
 [rendering]
 
