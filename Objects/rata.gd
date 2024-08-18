@@ -33,10 +33,10 @@ func _physics_process(delta):
 	else:
 		regular_movement(delta)
 	
-	if Input.is_action_pressed("Up") and $BLeftCast.is_colliding() and not climbing:
+	if Input.is_action_pressed("Climb") and $BLeftCast.is_colliding() and not climbing:
 		climbing = true
 		climbing_dir = -1
-	if Input.is_action_pressed("Up") and $BRightCast.is_colliding() and not climbing:
+	if Input.is_action_pressed("Climb") and $BRightCast.is_colliding() and not climbing:
 		climbing = true
 		climbing_dir = 1
 	
