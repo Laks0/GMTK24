@@ -11,6 +11,8 @@ class_name Cat
 @export var chase_speed : float = 700
 @export var friction : float = 20
 
+@export var max_height_vision_distance : float = 32
+
 var patroll_dir : int = 1
 
 var scale_factor : float = 1
@@ -22,7 +24,7 @@ func _physics_process(delta):
 	
 	$VisionCast.target_position = position.direction_to(rat.position) * vision_distance
 	
-	if $VisionCast.get_collider() is Rata:
+	if chasing:
 		follow_rat(delta)
 	else:
 		patroll(delta)
@@ -31,7 +33,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 func follow_rat(delta):
-	chasing = true
+	if not can_see_rat():
+		loose_focus()
+		return
+	
 	var dir = sign(rat.position.x - position.x)
 	velocity.x += dir * acceleration * delta
 	velocity.x = clamp(velocity.x, -chase_speed, chase_speed)
@@ -40,7 +45,6 @@ func follow_rat(delta):
 		velocity.x = lerp(velocity.x, 0.0, friction * delta)
 
 func patroll(delta):
-	chasing = false
 	if patroll_dir == 1 and not $RightFloorCast.is_colliding() and is_on_floor():
 		patroll_dir = -1
 	if patroll_dir == -1 and not $LeftFloorCast.is_colliding() and is_on_floor():
@@ -60,3 +64,18 @@ func patroll(delta):
 	velocity.x = clamp(velocity.x, -patroll_speed, patroll_speed)
 	if patroll_dir != sign(velocity.x):
 		velocity.x = lerp(velocity.x, 0.0, friction * delta)
+	
+	# Detección de la rata
+	if can_see_rat():
+		chasing = true
+
+func loose_focus():
+	await get_tree().create_timer(.5).timeout
+	chasing = false
+
+func can_see_rat() -> bool:
+	if (not $VisionCast.is_colliding()) or (not $VisionCast.get_collider() is Rata):
+		return false
+	if abs(rat.position.y - position.y) > max_height_vision_distance:
+		return false
+	return true
