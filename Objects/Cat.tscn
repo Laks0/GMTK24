@@ -102,7 +102,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c861p"]
-size = Vector2(48, 28)
+size = Vector2(48, 24)
 
 [node name="Cat" type="CharacterBody2D"]
 collision_mask = 13
@@ -110,7 +110,9 @@ script = ExtResource("1_au8ox")
 
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uxlqq")
-animation = &"correr"
+animation = &"caminar"
+frame = 1
+frame_progress = 0.946737
 flip_h = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -120,7 +122,7 @@ scale = Vector2(0.0208333, 0.03125)
 texture = ExtResource("1_0mnln")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 2)
+position = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_c861p")
 
 [node name="VisionCast" type="RayCast2D" parent="."]

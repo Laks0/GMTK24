@@ -39,14 +39,10 @@ func follow_rat(delta):
 	animated_sprite.play("correr")
 	if not can_see_rat():
 		loose_focus()
-		return
-	if rat.position.x > position.x:
-		animated_sprite.flip_h = true
-		return
-	else:
-		animated_sprite.flip_h = false
-		return 
+	
 	var dir = sign(rat.position.x - position.x)
+	
+	animated_sprite.flip_h = (dir == 1)
 	velocity.x += dir * acceleration * delta
 	velocity.x = clamp(velocity.x, -chase_speed, chase_speed)
 	
