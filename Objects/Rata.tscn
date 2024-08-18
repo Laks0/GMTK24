@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ddeqtn6yoegeq" path="res://Assets/Visuales/vector-pixel-art-rat-isolated-103769938-1586460681.jpg" id="1_vpego"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eelpw"]
-size = Vector2(14, 14)
+size = Vector2(12, 14)
 
 [node name="Rata" type="CharacterBody2D"]
 collision_layer = 2

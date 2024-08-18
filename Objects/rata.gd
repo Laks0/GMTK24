@@ -20,6 +20,7 @@ var funnel_direction_relation : int = 1
 
 ## La dirección en la que te estás moviendo
 var dir : int = 0
+var grab_direction : int
 
 func _physics_process(delta):
 	############
@@ -50,7 +51,8 @@ func _physics_process(delta):
 		attempt_grab()
 	
 	if grabbing_funnel != null:
-		var grab_direction := (1 if dir == 0 else dir)
+		if dir != 0:
+			grab_direction = dir
 		grabbing_funnel.scale.x = abs(grabbing_funnel.scale.x) * grab_direction * funnel_direction_relation
 		grabbing_funnel.position = global_position + Vector2(20, 0) * grab_direction
 		if Input.is_action_just_released("grab"):
