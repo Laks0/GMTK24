@@ -28,6 +28,8 @@ func _physics_process(delta):
 		climbing_movement(delta)
 	else:
 		regular_movement(delta)
+		animated_sprite.rotation = 0
+		animated_sprite.flip_v = false
 	
 	if Input.is_action_pressed("Climb") and $BLeftCast.is_colliding() and not climbing:
 		climbing = true
@@ -67,6 +69,18 @@ func climbing_movement(delta : float):
 		movement_dir = -1
 	if Input.is_action_pressed("Down"):
 		movement_dir = 1
+	
+	animated_sprite.rotation = -PI/2
+	if movement_dir == 0:
+		animated_sprite.stop()
+	elif movement_dir == -1:
+		animated_sprite.play("caminar")
+		animated_sprite.flip_h = false
+	elif movement_dir == 1:
+		animated_sprite.play("caminar")
+		animated_sprite.flip_h = true
+	
+	animated_sprite.flip_v = climbing_dir == -1
 	
 	velocity.y += climb_acceleration * delta * movement_dir
 	
