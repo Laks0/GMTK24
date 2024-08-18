@@ -34,10 +34,10 @@ func _physics_process(delta):
 		animated_sprite.rotation = 0
 		animated_sprite.flip_v = false
 	
-	if Input.is_action_pressed("Climb") and $BLeftCast.is_colliding() and not climbing:
+	if Input.is_action_pressed("Climb") and $BLeftCast.is_colliding() and can_start_climb():
 		climbing = true
 		climbing_dir = -1
-	if Input.is_action_pressed("Climb") and $BRightCast.is_colliding() and not climbing:
+	if Input.is_action_pressed("Climb") and $BRightCast.is_colliding() and can_start_climb():
 		climbing = true
 		climbing_dir = 1
 	
@@ -68,6 +68,11 @@ func regular_movement(delta : float):
 	
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y -= jump_speed
+
+func can_start_climb() -> bool:
+	if stamina_left <= 0 or climbing:
+		return false
+	return true
 
 func climbing_movement(delta : float):
 	stamina_left -= delta
