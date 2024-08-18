@@ -96,10 +96,18 @@ func enlarge():
 	scale_factor = 2
 	
 	start_size_animation()
+	
+	await get_tree().create_timer(5).timeout
+	scale_factor = 1
+	start_size_animation()
 
 func reduce():
 	scale_factor = .5
 	
+	start_size_animation()
+	
+	await get_tree().create_timer(5).timeout
+	scale_factor = 1
 	start_size_animation()
 
 func start_size_animation():
