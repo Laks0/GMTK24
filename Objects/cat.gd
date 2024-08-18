@@ -15,6 +15,8 @@ var patroll_dir : int = 1
 
 var scale_factor : float = 1
 
+var chasing := false
+
 func _physics_process(delta):
 	scale = Vector2.ONE * scale_factor
 	
@@ -29,6 +31,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func follow_rat(delta):
+	chasing = true
 	var dir = sign(rat.position.x - position.x)
 	velocity.x += dir * acceleration * delta
 	velocity.x = clamp(velocity.x, -chase_speed, chase_speed)
@@ -37,6 +40,7 @@ func follow_rat(delta):
 		velocity.x = lerp(velocity.x, 0.0, friction * delta)
 
 func patroll(delta):
+	chasing = false
 	if patroll_dir == 1 and not $RightFloorCast.is_colliding() and is_on_floor():
 		patroll_dir = -1
 	if patroll_dir == -1 and not $LeftFloorCast.is_colliding() and is_on_floor():

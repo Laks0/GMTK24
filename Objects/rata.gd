@@ -21,9 +21,9 @@ var funnel_direction_relation : int = 1
 func _physics_process(delta):
 	var dir : int = 0
 	if Input.is_action_pressed("Right"):
-		dir = -1
-	if Input.is_action_pressed("Left"):
 		dir = 1
+	if Input.is_action_pressed("Left"):
+		dir = -1
 	
 	velocity.x += acceleration * dir * delta
 	velocity.x = clamp(velocity.x, -max_speed, max_speed)
