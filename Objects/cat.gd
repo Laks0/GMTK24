@@ -13,6 +13,8 @@ class_name Cat
 
 @export var max_height_vision_distance : float = 32
 
+@onready var animated_sprite = $animated_sprite
+
 var patroll_dir : int = 1
 
 var scale_factor : float = 1
@@ -33,10 +35,16 @@ func _physics_process(delta):
 	move_and_slide()
 
 func follow_rat(delta):
+	animated_sprite.play("correr")
 	if not can_see_rat():
 		loose_focus()
 		return
-	
+	if rat.position.x > position.x:
+		animated_sprite.flip_h = true
+		return
+	else:
+		animated_sprite.flip_h = false
+		return 
 	var dir = sign(rat.position.x - position.x)
 	velocity.x += dir * acceleration * delta
 	velocity.x = clamp(velocity.x, -chase_speed, chase_speed)
@@ -45,18 +53,23 @@ func follow_rat(delta):
 		velocity.x = lerp(velocity.x, 0.0, friction * delta)
 
 func patroll(delta):
+	animated_sprite.play("caminar")
 	if patroll_dir == 1 and not $RightFloorCast.is_colliding() and is_on_floor():
+		animated_sprite.flip_h = false
 		patroll_dir = -1
 	if patroll_dir == -1 and not $LeftFloorCast.is_colliding() and is_on_floor():
+		animated_sprite.flip_h = true
 		patroll_dir = 1
 	
 	for cast : RayCast2D in $LeftWallCasts.get_children():
 		if cast.is_colliding():
+			animated_sprite.flip_h = true
 			patroll_dir = 1
 			break
 	
 	for cast : RayCast2D in $RightWallCasts.get_children():
 		if cast.is_colliding():
+			animated_sprite.flip_h = false
 			patroll_dir = -1
 			break
 	

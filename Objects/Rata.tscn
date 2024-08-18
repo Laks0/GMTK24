@@ -1,7 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx0cq3st44k6t"]
+[gd_scene load_steps=12 format=3 uid="uid://dx0cq3st44k6t"]
 
 [ext_resource type="Script" path="res://Objects/rata.gd" id="1_c3rt5"]
 [ext_resource type="Texture2D" uid="uid://ddeqtn6yoegeq" path="res://Assets/Visuales/vector-pixel-art-rat-isolated-103769938-1586460681.jpg" id="1_vpego"]
+[ext_resource type="Texture2D" uid="uid://dtvu7i67afmof" path="res://Assets/Visuales/Rata-Sheet.png" id="2_158y6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_en8yf"]
+atlas = ExtResource("2_158y6")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tte0b"]
+atlas = ExtResource("2_158y6")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygxtk"]
+atlas = ExtResource("2_158y6")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ijl0"]
+atlas = ExtResource("2_158y6")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nub3a"]
+atlas = ExtResource("2_158y6")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6o40"]
+atlas = ExtResource("2_158y6")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2pigx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_en8yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tte0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygxtk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ijl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nub3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6o40")
+}],
+"loop": true,
+"name": &"caminar",
+"speed": 20.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eelpw"]
 size = Vector2(12, 14)
@@ -13,7 +64,15 @@ script = ExtResource("1_c3rt5")
 acceleration = 1000.0
 max_speed = 400.0
 
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.38419e-07, 0)
+sprite_frames = SubResource("SpriteFrames_2pigx")
+animation = &"caminar"
+frame = 2
+frame_progress = 0.827753
+
 [node name="Vector-pixel-art-rat-isolated-103769938-1586460681" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("1_vpego")
 
