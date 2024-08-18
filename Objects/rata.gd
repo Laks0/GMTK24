@@ -18,6 +18,9 @@ var climbing_dir := 0
 var dir : int = 0
 var grab_direction : int
 
+@export var stamina_time : float = 3
+var stamina_left := stamina_time
+
 func _physics_process(delta):
 	############
 	# Movimiento
@@ -37,6 +40,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Climb") and $BRightCast.is_colliding() and not climbing:
 		climbing = true
 		climbing_dir = 1
+	
+	if is_on_floor():
+		stamina_left = stamina_time
 	
 	move_and_slide()
 
@@ -64,6 +70,11 @@ func regular_movement(delta : float):
 		velocity.y -= jump_speed
 
 func climbing_movement(delta : float):
+	stamina_left -= delta
+	if stamina_left <= 0:
+		climbing = false
+		return
+	
 	var movement_dir : int = 0
 	if Input.is_action_pressed("Up"):
 		movement_dir = -1
