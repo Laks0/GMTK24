@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+[gd_scene load_steps=4 format=3 uid="uid://b0cdb1gdsc558"]
+=======
 [gd_scene load_steps=19 format=3 uid="uid://b0cdb1gdsc558"]
+>>>>>>> c605296b3f281917fc7ff42cbc2af0a35d52c3f2
 
 [ext_resource type="Texture2D" uid="uid://crrbx6pd4xype" path="res://Assets/Visuales/gato.jpg" id="1_0mnln"]
 [ext_resource type="Script" path="res://Objects/cat.gd" id="1_au8ox"]

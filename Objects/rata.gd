@@ -10,6 +10,7 @@ class_name Rata
 @export var max_climb_speed : float = 100
 var climbing := false
 var climbing_dir := 0
+@onready var animated_sprite = $animated_sprite
 
 @export var gravity_acceleration : float = 980
 
@@ -38,10 +39,17 @@ func _physics_process(delta):
 	move_and_slide()
 
 func regular_movement(delta : float):
+	#DUDA: no se si nestear el input asi esta bien
 	if Input.is_action_pressed("Right"):
+		animated_sprite.flip_h = false
+		animated_sprite.play("caminar")
 		dir = 1
-	if Input.is_action_pressed("Left"):
+	elif Input.is_action_pressed("Left"):
+		animated_sprite.flip_h = true
+		animated_sprite.play("caminar")
 		dir = -1
+	else: 
+		animated_sprite.stop()
 	
 	velocity.x += acceleration * dir * delta
 	velocity.x = clamp(velocity.x, -max_speed, max_speed)
