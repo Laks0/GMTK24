@@ -86,19 +86,19 @@ collision_mask = 2
 [node name="BLeftCast" type="RayCast2D" parent="."]
 position = Vector2(0, 6)
 target_position = Vector2(-15, 0)
-collision_mask = 4
+collision_mask = 12
 
 [node name="BRightCast" type="RayCast2D" parent="."]
 position = Vector2(0, 6)
 target_position = Vector2(15, 0)
-collision_mask = 4
+collision_mask = 12
 
 [node name="TLeftCast" type="RayCast2D" parent="."]
 position = Vector2(0, -3)
 target_position = Vector2(-15, 0)
-collision_mask = 4
+collision_mask = 12
 
 [node name="TRightCast" type="RayCast2D" parent="."]
 position = Vector2(0, -3)
 target_position = Vector2(15, 0)
-collision_mask = 4
+collision_mask = 12
