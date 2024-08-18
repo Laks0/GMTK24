@@ -76,6 +76,7 @@ Climb={
 2d_physics/layer_2="Rata"
 2d_physics/layer_3="Paredes"
 2d_physics/layer_4="Paredes "
+2d_physics/layer_5="Queso"
 
 [rendering]
 
