@@ -14,7 +14,7 @@ class_name Cat
 @export var max_height_vision_distance : float = 32
 
 @export var cat_height : int = 64
-@onready var animated_sprite : AnimatedSprite = $animmated_sprite
+@onready var animated_sprite : AnimatedSprite2D = $animated_sprite
 
 var patroll_dir : int = 1
 
