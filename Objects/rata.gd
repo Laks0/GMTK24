@@ -13,11 +13,6 @@ var climbing_dir := 0
 
 @export var gravity_acceleration : float = 980
 
-var grabbing_funnel : Funnel = null
-## Relación entre la dirección del embudo cuando fue agarrado y de la dirección,
-## 1 si eran iguales y -1 si eran distintas, se tiene que mantener constante
-var funnel_direction_relation : int = 1
-
 ## La dirección en la que te estás moviendo
 var dir : int = 0
 var grab_direction : int
@@ -41,34 +36,6 @@ func _physics_process(delta):
 		climbing_dir = 1
 	
 	move_and_slide()
-	
-	###################
-	# Agarrar el embudo
-	###################
-	$GrabCast.target_position = Vector2(10, 0) * dir
-	
-	if Input.is_action_just_pressed("grab") and $GrabCast.is_colliding() and grabbing_funnel == null:
-		attempt_grab()
-	
-	if grabbing_funnel != null:
-		if dir != 0:
-			grab_direction = dir
-		grabbing_funnel.scale.x = abs(grabbing_funnel.scale.x) * grab_direction * funnel_direction_relation
-		grabbing_funnel.position = global_position + Vector2(20, 0) * grab_direction
-		if Input.is_action_just_released("grab"):
-			grabbing_funnel.freeze = false
-			grabbing_funnel = null
-
-func attempt_grab():
-	var body = $GrabCast.get_collider()
-	if not body is Funnel:
-		return
-	body.freeze = true
-	grabbing_funnel = body
-	if dir == sign(body.scale.x):
-		funnel_direction_relation = 1
-	else:
-		funnel_direction_relation = -1
 
 func regular_movement(delta : float):
 	if Input.is_action_pressed("Right"):

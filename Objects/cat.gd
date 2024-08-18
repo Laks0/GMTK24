@@ -13,15 +13,17 @@ class_name Cat
 
 @export var max_height_vision_distance : float = 32
 
+@export var cat_height : int = 64
+
 var patroll_dir : int = 1
 
 var scale_factor : float = 1
 
 var chasing := false
 
+var size_tween : Tween = null
+
 func _physics_process(delta):
-	scale = Vector2.ONE * scale_factor
-	
 	$VisionCast.target_position = position.direction_to(rat.position) * vision_distance
 	
 	if chasing:
@@ -79,3 +81,19 @@ func can_see_rat() -> bool:
 	if abs(rat.position.y - position.y) > max_height_vision_distance:
 		return false
 	return true
+
+var scale_time : float = .1
+
+func enlarge():
+	scale_factor = 2
+	
+	start_size_animation()
+
+func reduce():
+	scale_factor = .5
+	
+	start_size_animation()
+
+func start_size_animation():
+	size_tween = create_tween()
+	size_tween.tween_property(self, "scale", scale_factor * Vector2.ONE, scale_time)
