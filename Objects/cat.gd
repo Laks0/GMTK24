@@ -70,7 +70,7 @@ func patroll(delta):
 		chasing = true
 
 func loose_focus():
-	await get_tree().create_timer(.5).timeout
+	await get_tree().create_timer(2).timeout
 	chasing = false
 
 func can_see_rat() -> bool:
