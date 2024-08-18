@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c0gjvj1i746qj"]
+[gd_scene load_steps=10 format=4 uid="uid://c0gjvj1i746qj"]
 
 [ext_resource type="TileSet" uid="uid://ba4wbbw13hom1" path="res://Assets/Visuales/tile_set.tres" id="1_4givm"]
 [ext_resource type="PackedScene" uid="uid://dx0cq3st44k6t" path="res://Objects/Rata.tscn" id="2_jt1ff"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b1diuin38ai25" path="res://Objects/Switch.tscn" id="4_vri4m"]
 [ext_resource type="Texture2D" uid="uid://clh02y361vxtc" path="res://icon.svg" id="5_qkq84"]
 [ext_resource type="PackedScene" uid="uid://dt0cwqnulxssx" path="res://Objects/Scaler.tscn" id="6_qgssg"]
+[ext_resource type="PackedScene" uid="uid://ciq2xdf7ok7cp" path="res://Objects/queso.tscn" id="7_wefmc"]
+[ext_resource type="PackedScene" uid="uid://cs4rfs8go4c2o" path="res://Objects/reja.tscn" id="8_frqc0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xepvk"]
 size = Vector2(20, 145)
@@ -46,3 +48,10 @@ shape = SubResource("RectangleShape2D_xepvk")
 [node name="Icon2" type="Sprite2D" parent="Scaler"]
 scale = Vector2(0.155, 0.98)
 texture = ExtResource("5_qkq84")
+
+[node name="queso" parent="." instance=ExtResource("7_wefmc")]
+position = Vector2(605, 45)
+
+[node name="reja" parent="." instance=ExtResource("8_frqc0")]
+position = Vector2(624, 285)
+scale = Vector2(1, 0.993861)

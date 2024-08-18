@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dx0cq3st44k6t"]
+[gd_scene load_steps=13 format=3 uid="uid://dx0cq3st44k6t"]
 
 [ext_resource type="Script" path="res://Objects/rata.gd" id="1_c3rt5"]
 [ext_resource type="Texture2D" uid="uid://ddeqtn6yoegeq" path="res://Assets/Visuales/vector-pixel-art-rat-isolated-103769938-1586460681.jpg" id="1_vpego"]
@@ -57,6 +57,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eelpw"]
 size = Vector2(12, 14)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n72ae"]
+
 [node name="Rata" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 15
@@ -72,7 +74,6 @@ frame = 2
 frame_progress = 0.827753
 
 [node name="Vector-pixel-art-rat-isolated-103769938-1586460681" type="Sprite2D" parent="."]
-visible = false
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("1_vpego")
 
@@ -102,3 +103,13 @@ collision_mask = 4
 position = Vector2(0, -3)
 target_position = Vector2(15, 0)
 collision_mask = 4
+
+[node name="queso_detector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="queso_detector"]
+shape = SubResource("RectangleShape2D_n72ae")
+debug_color = Color(0.781857, 0.30794, 0.777545, 0.42)
+
+[connection signal="area_entered" from="queso_detector" to="." method="_on_queso_detector_area_entered"]

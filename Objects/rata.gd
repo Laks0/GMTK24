@@ -106,3 +106,7 @@ func climbing_movement(delta : float):
 		# Si la parte de abajo sigue tocando una pared, saltamos un poco
 		if $BRightCast.is_colliding():
 			velocity.y -= 100
+
+
+func _on_queso_detector_area_entered(area):
+	get_parent().get_node("reja").queue_free()
