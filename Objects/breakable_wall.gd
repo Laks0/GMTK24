@@ -1,7 +1,7 @@
 extends StaticBody2D
 class_name BreakableWall
 
-func _process(delta):
+func _process(_delta):
 	if $RayCast2D.enabled and $RayCast2D.is_colliding() and not $RayCast2D.get_collider() is BreakableWall:
 		$TopSprite.visible = false
 		$BaseSprite.visible = true

@@ -24,11 +24,7 @@ var stamina_left := stamina_time
 @export var jumping_animation_time : float = .2
 var jumping := false
 
-#ultimo save antes de palmarla
-var last_save:Vector2 = position
-
-#alpha
-
+@export var camera : Camera2D
 
 func _physics_process(delta):
 	############
@@ -105,7 +101,6 @@ func climbing_movement(delta : float):
 		climbing = false
 		return
 	
-	
 	$StaminaBar.max_value = stamina_time
 	$StaminaBar.value = stamina_left
 	
@@ -155,22 +150,18 @@ func climbing_movement(delta : float):
 		if $BRightCast.is_colliding():
 			velocity.y -= 100
 
-
-func _on_queso_detector_area_entered(area):
+func _on_queso_detector_area_entered(_area):
 	get_parent().get_node("reja").queue_free()
 
-
-func _on_fail_save_detector_area_entered(area):
-	last_save = position
-	pass # Replace with function body.
-
-#LLAMAR CUANDO SE MUERE LA RATA
-func death():
-	position = last_save
-
-func alpha_invisible():
-	
-	return 
 func _on_fake_tile_detector_area_entered(area):
 	area.get_parent().get_node("tile").visible = false
 	print("wassup")
+
+func switch_cameras(cam : Camera2D):
+	var tween := create_tween()
+	tween.tween_property(camera, "position", cam.position, 2)
+	tween.tween_callback(func ():
+		cam.make_current()
+		camera.queue_free()
+		camera = cam)
+	
