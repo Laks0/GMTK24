@@ -164,3 +164,8 @@ func _on_fail_save_detector_area_entered(area):
 #LLAMAR CUANDO SE MUERE LA RATA
 func death():
 	position = last_save
+
+
+func _on_fake_tile_detector_area_entered(area):
+	area.get_parent().get_node("tile").visible=false 
+	print("wassup")

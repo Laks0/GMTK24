@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://didsgfgh2xlu1"]
+[gd_scene load_steps=11 format=4 uid="uid://didsgfgh2xlu1"]
 
+[ext_resource type="PackedScene" uid="uid://drpvo8rogb7r1" path="res://Objects/fake_tile.tscn" id="1_6wcbc"]
 [ext_resource type="TileSet" uid="uid://ba4wbbw13hom1" path="res://Assets/Visuales/tile_set.tres" id="1_pkr1x"]
 [ext_resource type="PackedScene" uid="uid://dx0cq3st44k6t" path="res://Objects/Rata.tscn" id="2_vuuig"]
 [ext_resource type="PackedScene" uid="uid://b0cdb1gdsc558" path="res://Objects/Cat.tscn" id="3_fnfak"]
@@ -15,7 +16,8 @@ size = Vector2(20, 122)
 
 [node name="Sector1" type="Node2D"]
 
-[node name="fail_saves" type="Node2D" parent="."]
+[node name="fake_tile" parent="." instance=ExtResource("1_6wcbc")]
+position = Vector2(-30, -84)
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="."]
 visible = false
@@ -33,7 +35,7 @@ tile_map_data = PackedByteArray("AAAAABYAAwADAAUAAAAAABUAAwAFAAUAAAAAABQAAwAEAAQ
 tile_set = ExtResource("1_pkr1x")
 
 [node name="Rata" parent="." instance=ExtResource("2_vuuig")]
-position = Vector2(-22, -82)
+position = Vector2(-137, -82)
 
 [node name="Camera2D" type="Camera2D" parent="Rata"]
 

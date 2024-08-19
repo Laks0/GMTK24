@@ -155,7 +155,6 @@ target_position = Vector2(15, 0)
 collision_mask = 12
 
 [node name="StaminaBar" type="ProgressBar" parent="."]
-visible = false
 offset_left = 6.0
 offset_top = -17.0
 offset_right = 10.0
@@ -165,12 +164,23 @@ max_value = 1.0
 fill_mode = 3
 show_percentage = false
 
-[node name="fail_save_detector" type="Area2D" parent="."]
+[node name="detectors" type="Node2D" parent="."]
+
+[node name="fake_tile_detector" type="Area2D" parent="detectors"]
 collision_layer = 2
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fail_save_detector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectors/fake_tile_detector"]
 position = Vector2(1, 1.5)
 shape = SubResource("RectangleShape2D_cpx70")
 
-[connection signal="area_entered" from="fail_save_detector" to="." method="_on_fail_save_detector_area_entered"]
+[node name="fail_save_detector" type="Area2D" parent="detectors"]
+collision_layer = 2
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectors/fail_save_detector"]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_cpx70")
+
+[connection signal="area_entered" from="detectors/fake_tile_detector" to="." method="_on_fake_tile_detector_area_entered"]
+[connection signal="area_entered" from="detectors/fail_save_detector" to="." method="_on_fail_save_detector_area_entered"]

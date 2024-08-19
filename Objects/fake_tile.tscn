@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://drpvo8rogb7r1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_woujh"]
+width = 16
+height = 16
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvnhm"]
+size = Vector2(16, 16)
+
+[node name="fake_tile" type="Node2D"]
+
+[node name="tile" type="Sprite2D" parent="."]
+texture = SubResource("NoiseTexture2D_woujh")
+
+[node name="rata_detector" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rata_detector"]
+shape = SubResource("RectangleShape2D_nvnhm")
