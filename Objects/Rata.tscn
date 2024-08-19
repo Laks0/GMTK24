@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dx0cq3st44k6t"]
+[gd_scene load_steps=17 format=3 uid="uid://dx0cq3st44k6t"]
 
 [ext_resource type="Script" path="res://Objects/rata.gd" id="1_c3rt5"]
 [ext_resource type="Texture2D" uid="uid://ddeqtn6yoegeq" path="res://Assets/Visuales/vector-pixel-art-rat-isolated-103769938-1586460681.jpg" id="1_vpego"]
@@ -105,6 +105,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eelpw"]
 size = Vector2(12, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpx70"]
+size = Vector2(36, 19)
+
 [node name="Rata" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 15
@@ -161,3 +164,13 @@ scale = Vector2(1, 0.4)
 max_value = 1.0
 fill_mode = 3
 show_percentage = false
+
+[node name="fail_save_detector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fail_save_detector"]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_cpx70")
+
+[connection signal="area_entered" from="fail_save_detector" to="." method="_on_fail_save_detector_area_entered"]
