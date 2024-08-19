@@ -159,8 +159,9 @@ func _on_fake_tile_detector_area_entered(area):
 
 func switch_cameras(cam : Camera2D):
 	var tween := create_tween()
-	tween.tween_property(camera, "position", cam.position, 2)
+	#tween.tween_property(camera, "position", cam.get_screen_center_position(), .2)
 	tween.tween_callback(func ():
+		add_child(cam)
 		cam.make_current()
 		camera.queue_free()
 		camera = cam)
