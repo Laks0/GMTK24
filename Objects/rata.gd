@@ -36,6 +36,7 @@ func _physics_process(delta):
 		regular_movement(delta)
 		animated_sprite.rotation = 0
 		animated_sprite.flip_v = false
+		animated_sprite.speed_scale = 1
 		
 		if jumping:
 			animated_sprite.play("Jump")
@@ -61,6 +62,8 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		stamina_left = stamina_time
+	
+	$StaminaBar.visible = climbing
 	
 	move_and_slide()
 
@@ -95,6 +98,13 @@ func climbing_movement(delta : float):
 	if stamina_left <= 0:
 		climbing = false
 		return
+	
+	
+	$StaminaBar.max_value = stamina_time
+	$StaminaBar.value = stamina_left
+	
+	var stamina_percentage_used : float = 1 - (stamina_left/stamina_time)
+	animated_sprite.speed_scale =1 + stamina_percentage_used * 1.5
 	
 	var movement_dir : int = 0
 	if Input.is_action_pressed("Up"):
