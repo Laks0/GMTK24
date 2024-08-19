@@ -97,19 +97,19 @@ func enlarge():
 	
 	start_size_animation()
 	
-	await get_tree().create_timer(5).timeout
-	scale_factor = 1
-	start_size_animation()
+	$ScaleTimer.start()
 
 func reduce():
 	scale_factor = .5
 	
 	start_size_animation()
 	
-	await get_tree().create_timer(5).timeout
-	scale_factor = 1
-	start_size_animation()
+	$ScaleTimer.start()
 
 func start_size_animation():
 	size_tween = create_tween()
 	size_tween.tween_property(self, "scale", scale_factor * Vector2.ONE, scale_time)
+
+func _on_scale_timer_timeout():
+	scale_factor = 1
+	start_size_animation()

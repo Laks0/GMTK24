@@ -1,7 +1,7 @@
 extends Area2D
 class_name Switch
 
-enum Activation {CAT, RAT}
+enum Activation {RAT, CAT}
 @export var switch_type : Activation
 
 signal turned
