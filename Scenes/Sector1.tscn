@@ -157,7 +157,7 @@ tile_map_data = PackedByteArray("AAD/////AwABAAYAAAD//wAAAwABAAcAAAD//wEAAwABAAY
 tile_set = ExtResource("1_pkr1x")
 
 [node name="DecoFondo" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAiAAgAAwAJAAEAAAAiAAkAAwAJAAIAAABfABkAAwAPAAEAAABlABoAAwAOAAEAAABsABoAAwAJAAEAAABsABsAAwAJAAIAAABrABoAAwAKAAAAAABrABsAAwAKAAEAAABrABwAAwAKAAIAAABrAB0AAwAKAAIAAABrAB4AAwAKAAMAAABsAB4AAwALAAMAAABtAB4AAwALAAMAAABuAB4AAwALAAMAAABvAB4AAwALAAMAAABwAB4AAwALAAMAAABNABwAAwAKAAEAAABNAB0AAwAKAAIAAABNAB4AAwAMAAIAAABNAB8AAwAKAAIAAABNACAAAwAKAAMAAABOACAAAwALAAMAAABPACAAAwALAAMAAABQACAAAwALAAMAAABNABsAAwALAAIAAABNABoAAwAKAAIAAABNABkAAwAKAAIAAABNABgAAwAKAAQAAABLABsAAwAOAAIAAABLABwAAwAOAAMAAABMABsAAwAPAAIAAABMABwAAwAPAAMAAAA3ABkAAwAOAAIAAAA3ABoAAwAOAAMAAAA3ABsAAwAOAAQAAAA3ABwAAwAOAAUAAAA4ABkAAwAPAAIAAAA4ABoAAwAPAAMAAAA4ABsAAwAPAAQAAAA4ABwAAwAPAAUAAABRACAAAwAMAAMAAABRACEAAwALAAUAAABRACIAAwAKAAQAAABRACMAAwAKAAIAAABRACQAAwAMAAIAAABRACUAAwAKAAIAAABNABcAAwAMAAMAAABMABcAAwALAAMAAAA+ACUAAwANAAEAAAA+AB4AAwANAAEAAAA+AB0AAwANAAEAAAA+ABwAAwANAAEAAAA+ABsAAwANAAEAAAA+ABoAAwANAAEAAAA+ABkAAwANAAEAAAA+ABgAAwANAAEAAAA+AB8AAwANAAEAAAA+ACAAAwANAAEAAAA+ACEAAwANAAEAAAA+ACIAAwANAAEAAAA+ACMAAwANAAEAAAA+ACQAAwANAAEAAAA=")
+tile_map_data = PackedByteArray("AABfABkAAwAPAAEAAABlABoAAwAOAAEAAABsABoAAwAJAAEAAABsABsAAwAJAAIAAABrABoAAwAKAAAAAABrABsAAwAKAAEAAABrABwAAwAKAAIAAABrAB0AAwAKAAIAAABrAB4AAwAKAAMAAABsAB4AAwALAAMAAABtAB4AAwALAAMAAABuAB4AAwALAAMAAABvAB4AAwALAAMAAABwAB4AAwALAAMAAABNABwAAwAKAAEAAABNAB0AAwAKAAIAAABNAB4AAwAMAAIAAABNAB8AAwAKAAIAAABNACAAAwAKAAMAAABOACAAAwALAAMAAABPACAAAwALAAMAAABQACAAAwALAAMAAABNABsAAwALAAIAAABNABoAAwAKAAIAAABNABkAAwAKAAIAAABNABgAAwAKAAQAAABLABsAAwAOAAIAAABLABwAAwAOAAMAAABMABsAAwAPAAIAAABMABwAAwAPAAMAAAA3ABkAAwAOAAIAAAA3ABoAAwAOAAMAAAA3ABsAAwAOAAQAAAA3ABwAAwAOAAUAAAA4ABkAAwAPAAIAAAA4ABoAAwAPAAMAAAA4ABsAAwAPAAQAAAA4ABwAAwAPAAUAAABRACAAAwAMAAMAAABRACEAAwALAAUAAABRACIAAwAKAAQAAABRACMAAwAKAAIAAABRACQAAwAMAAIAAABRACUAAwAKAAIAAABNABcAAwAMAAMAAABMABcAAwALAAMAAAA+ACUAAwANAAEAAAA+AB4AAwANAAEAAAA+AB0AAwANAAEAAAA+ABwAAwANAAEAAAA+ABsAAwANAAEAAAA+ABoAAwANAAEAAAA+ABkAAwANAAEAAAA+ABgAAwANAAEAAAA+AB8AAwANAAEAAAA+ACAAAwANAAEAAAA+ACEAAwANAAEAAAA+ACIAAwANAAEAAAA+ACMAAwANAAEAAAA+ACQAAwANAAEAAAA=")
 tile_set = SubResource("TileSet_xay72")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -174,6 +174,11 @@ position = Vector2(281, 209)
 camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Rata"]
+position = Vector2(-22, -46)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 360
 
 [node name="SE" type="Node2D" parent="."]
 position = Vector2(1111, 527)
@@ -205,15 +210,49 @@ shape = SubResource("RectangleShape2D_vanb8")
 
 [node name="Checkpoint" parent="SE" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
 position = Vector2(-450, -233)
-collision_layer = 0
-collision_mask = 2
 camera_rect = NodePath("Polygon2D")
 
 [node name="Polygon2D" type="Polygon2D" parent="SE/Checkpoint"]
 visible = false
 polygon = PackedVector2Array(-17, -26, -18, 304, 1137, 306, 1139, -39)
 
+[node name="Checkpoint2" parent="SE" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
+position = Vector2(58, -221)
+camera_rect = NodePath("../Checkpoint/Polygon2D")
+
+[node name="E" type="Node2D" parent="."]
+position = Vector2(1169, 230)
+
+[node name="Checkpoint" parent="E" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
+camera_rect = NodePath("Polygon2D")
+
+[node name="Polygon2D" type="Polygon2D" parent="E/Checkpoint"]
+visible = false
+position = Vector2(-1174, -236)
+polygon = PackedVector2Array(1800, 265, 646, 262, 643, -106, 1806, -99)
+
+[node name="Checkpoint2" parent="E" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
+position = Vector2(-497, -37)
+camera_rect = NodePath("../Checkpoint/Polygon2D")
+
+[node name="Checkpoint3" parent="E" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
+position = Vector2(109, -77)
+camera_rect = NodePath("../Checkpoint/Polygon2D")
+
 [node name="NE" type="Node2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="NE"]
+visible = false
+position = Vector2(1319, 71)
+polygon = PackedVector2Array(482, 33, 483, -390, -118, -393, -118, 22)
+
+[node name="Checkpoint" parent="NE" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
+position = Vector2(1319, 71)
+camera_rect = NodePath("../Polygon2D")
+
+[node name="Checkpoint2" parent="NE" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
+position = Vector2(1222, -177)
+camera_rect = NodePath("../Polygon2D")
 
 [node name="Switch2" parent="NE" instance=ExtResource("5_qdvej")]
 position = Vector2(1759, -274)
@@ -244,3 +283,35 @@ shape = SubResource("RectangleShape2D_vanb8")
 [node name="Cat2" parent="NE" node_paths=PackedStringArray("rat") instance=ExtResource("3_fnfak")]
 position = Vector2(1739, 2)
 rat = NodePath("../../Rata")
+
+[node name="N" type="Node2D" parent="."]
+
+[node name="Checkpoint" parent="N" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
+position = Vector2(1168, -179)
+camera_rect = NodePath("../Polygon2D")
+
+[node name="Checkpoint2" parent="N" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
+position = Vector2(368, -45)
+camera_rect = NodePath("../Polygon2D")
+
+[node name="Polygon2D" type="Polygon2D" parent="N"]
+visible = false
+polygon = PackedVector2Array(336, -31, 334, -294, 1209, -293, 1212, -70)
+
+[node name="Centro" type="Node2D" parent="."]
+
+[node name="Checkpoint" parent="Centro" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
+position = Vector2(368, 20)
+camera_rect = NodePath("../Polygon2D")
+
+[node name="Checkpoint2" parent="Centro" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
+position = Vector2(594, 190)
+camera_rect = NodePath("../Polygon2D")
+
+[node name="Checkpoint3" parent="Centro" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
+position = Vector2(599, 285)
+camera_rect = NodePath("../Polygon2D")
+
+[node name="Polygon2D" type="Polygon2D" parent="Centro"]
+visible = false
+polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
