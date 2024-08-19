@@ -27,6 +27,9 @@ var jumping := false
 #ultimo save antes de palmarla
 var last_save:Vector2 = position
 
+#alpha
+
+
 func _physics_process(delta):
 	############
 	# Movimiento
@@ -165,7 +168,9 @@ func _on_fail_save_detector_area_entered(area):
 func death():
 	position = last_save
 
-
+func alpha_invisible():
+	
+	return 
 func _on_fake_tile_detector_area_entered(area):
-	area.get_parent().get_node("tile").visible=false 
+	area.get_parent().get_node("tile").visible = false
 	print("wassup")
