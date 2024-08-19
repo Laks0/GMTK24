@@ -89,6 +89,11 @@ func regular_movement(delta : float):
 		
 		await get_tree().create_timer(jumping_animation_time).timeout
 		jumping = false
+	
+	#if not is_on_floor() and not Input.is_action_pressed("Jump"):
+		#velocity.y += gravity_acceleration * delta
+	if Input.is_action_just_released("Jump") and velocity.y < 0.0:
+		velocity.y = 0
 
 func can_start_climb() -> bool:
 	if stamina_left <= 0 or climbing:
