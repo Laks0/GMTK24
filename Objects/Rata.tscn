@@ -1,8 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://dx0cq3st44k6t"]
+[gd_scene load_steps=16 format=3 uid="uid://dx0cq3st44k6t"]
 
 [ext_resource type="Script" path="res://Objects/rata.gd" id="1_c3rt5"]
 [ext_resource type="Texture2D" uid="uid://ddeqtn6yoegeq" path="res://Assets/Visuales/vector-pixel-art-rat-isolated-103769938-1586460681.jpg" id="1_vpego"]
 [ext_resource type="Texture2D" uid="uid://dtvu7i67afmof" path="res://Assets/Visuales/Rata-Sheet.png" id="2_158y6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv86g"]
+atlas = ExtResource("2_158y6")
+region = Rect2(0, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp0sm"]
+atlas = ExtResource("2_158y6")
+region = Rect2(32, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48sl1"]
+atlas = ExtResource("2_158y6")
+region = Rect2(0, 32, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_en8yf"]
 atlas = ExtResource("2_158y6")
@@ -28,8 +40,36 @@ region = Rect2(128, 0, 32, 16)
 atlas = ExtResource("2_158y6")
 region = Rect2(160, 0, 32, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtxcw"]
+atlas = ExtResource("2_158y6")
+region = Rect2(0, 16, 32, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_2pigx"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv86g")
+}],
+"loop": true,
+"name": &"Falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp0sm")
+}],
+"loop": true,
+"name": &"Fell",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48sl1")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_en8yf")
@@ -52,10 +92,18 @@ animations = [{
 "loop": true,
 "name": &"caminar",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtxcw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eelpw"]
-size = Vector2(12, 14)
+size = Vector2(12, 12)
 
 [node name="Rata" type="CharacterBody2D"]
 collision_layer = 2
@@ -67,9 +115,8 @@ max_speed = 400.0
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.38419e-07, 0)
 sprite_frames = SubResource("SpriteFrames_2pigx")
-animation = &"caminar"
-frame = 2
-frame_progress = 0.827753
+animation = &"Fell"
+autoplay = "idle"
 
 [node name="Vector-pixel-art-rat-isolated-103769938-1586460681" type="Sprite2D" parent="."]
 visible = false
@@ -77,6 +124,7 @@ scale = Vector2(0.02, 0.02)
 texture = ExtResource("1_vpego")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_eelpw")
 
 [node name="GrabCast" type="RayCast2D" parent="."]
