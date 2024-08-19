@@ -25,7 +25,7 @@ var chasing := false
 var size_tween : Tween = null
 
 func _physics_process(delta):
-	$VisionCast.target_position = position.direction_to(rat.position) * vision_distance
+	$VisionCast.target_position = global_position.direction_to(rat.position) * vision_distance * scale_factor
 	
 	if chasing:
 		follow_rat(delta)
@@ -40,7 +40,7 @@ func follow_rat(delta):
 	if not can_see_rat():
 		loose_focus()
 	
-	var dir = sign(rat.position.x - position.x)
+	var dir = sign(rat.position.x - global_position.x)
 	
 	animated_sprite.flip_h = (dir == 1)
 	velocity.x += dir * acceleration * delta
@@ -86,7 +86,7 @@ func loose_focus():
 func can_see_rat() -> bool:
 	if (not $VisionCast.is_colliding()) or (not $VisionCast.get_collider() is Rata):
 		return false
-	if abs(rat.position.y - position.y) > max_height_vision_distance:
+	if abs(rat.position.y - global_position.y) > max_height_vision_distance:
 		return false
 	return true
 
