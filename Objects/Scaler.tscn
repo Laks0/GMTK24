@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Objects/scaler.gd" id="1_3m30d"]
 
 [node name="Scaler" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_3m30d")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
