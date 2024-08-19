@@ -489,6 +489,7 @@ texture = ExtResource("3_tl82n")
 13:6/0 = 0
 14:6/0 = 0
 15:6/0 = 0
+15:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.5, -8, 0.125, -8, 0.125, 8, -5.625, 8)
 
 [resource]
 physics_layer_0/collision_layer = 4
