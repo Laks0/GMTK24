@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsijj40o2o56d"]
+[gd_scene load_steps=6 format=3 uid="uid://dsijj40o2o56d"]
 
 [ext_resource type="Script" path="res://Objects/breakable_wall.gd" id="1_ijt0p"]
-[ext_resource type="Texture2D" uid="uid://clh02y361vxtc" path="res://icon.svg" id="2_43ys8"]
+[ext_resource type="Texture2D" uid="uid://dq3v56ub02vqx" path="res://Assets/Visuales/TileMap.png" id="2_jsxpg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mnqg"]
 size = Vector2(8, 16)
@@ -9,22 +9,54 @@ size = Vector2(8, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnlla"]
 size = Vector2(16, 16)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kd7wm"]
+particle_flag_disable_z = true
+angle_min = -214.2
+angle_max = 666.4
+spread = 180.0
+initial_velocity_max = 38.47
+gravity = Vector3(0, 98, 0)
+
 [node name="BreakableWall" type="StaticBody2D"]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_ijt0p")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BaseSprite" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.71064, 0.696958, 0, 1)
-scale = Vector2(0.063, 0.125)
-texture = ExtResource("2_43ys8")
+texture = ExtResource("2_jsxpg")
+region_enabled = true
+region_rect = Rect2(240, 96, 16, 16)
+
+[node name="TopSprite" type="Sprite2D" parent="."]
+modulate = Color(0.71064, 0.696958, 0, 1)
+texture = ExtResource("2_jsxpg")
+region_enabled = true
+region_rect = Rect2(224, 96, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_0mnqg")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_wnlla")
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 17)
+collision_mask = 12
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.941853, 0.564395, 0, 1)
+position = Vector2(-1, 0)
+emitting = false
+amount = 33
+process_material = SubResource("ParticleProcessMaterial_kd7wm")
+one_shot = true
+explosiveness = 1.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]

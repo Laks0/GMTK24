@@ -21,6 +21,9 @@ var grab_direction : int
 @export var stamina_time : float = 3
 var stamina_left := stamina_time
 
+@export var jumping_animation_time : float = .2
+var jumping := false
+
 func _physics_process(delta):
 	############
 	# Movimiento
@@ -33,31 +36,43 @@ func _physics_process(delta):
 		regular_movement(delta)
 		animated_sprite.rotation = 0
 		animated_sprite.flip_v = false
+		animated_sprite.speed_scale = 1
+		
+		if jumping:
+			animated_sprite.play("Jump")
+		elif not is_on_floor():
+			animated_sprite.play("Falling")
+		elif dir == 0:
+			animated_sprite.play("idle")
+		else:
+			animated_sprite.play("caminar")
+		
+		if dir == -1:
+			animated_sprite.flip_h = true
+		if dir == 1:
+			animated_sprite.flip_h = false
 	
-	if Input.is_action_pressed("Climb") and $BLeftCast.is_colliding() and not climbing:
+	
+	if Input.is_action_pressed("Climb") and $BLeftCast.is_colliding() and can_start_climb():
 		climbing = true
 		climbing_dir = -1
-	if Input.is_action_pressed("Climb") and $BRightCast.is_colliding() and not climbing:
+	if Input.is_action_pressed("Climb") and $BRightCast.is_colliding() and can_start_climb():
 		climbing = true
 		climbing_dir = 1
 	
 	if is_on_floor():
 		stamina_left = stamina_time
 	
+	$StaminaBar.visible = climbing
+	
 	move_and_slide()
 
 func regular_movement(delta : float):
 	#DUDA: no se si nestear el input asi esta bien
 	if Input.is_action_pressed("Right"):
-		animated_sprite.flip_h = false
-		animated_sprite.play("caminar")
 		dir = 1
 	elif Input.is_action_pressed("Left"):
-		animated_sprite.flip_h = true
-		animated_sprite.play("caminar")
 		dir = -1
-	else: 
-		animated_sprite.stop()
 	
 	velocity.x += acceleration * dir * delta
 	velocity.x = clamp(velocity.x, -max_speed, max_speed)
@@ -68,12 +83,28 @@ func regular_movement(delta : float):
 	
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y -= jump_speed
+		jumping = true
+		
+		await get_tree().create_timer(jumping_animation_time).timeout
+		jumping = false
+
+func can_start_climb() -> bool:
+	if stamina_left <= 0 or climbing:
+		return false
+	return true
 
 func climbing_movement(delta : float):
 	stamina_left -= delta
 	if stamina_left <= 0:
 		climbing = false
 		return
+	
+	
+	$StaminaBar.max_value = stamina_time
+	$StaminaBar.value = stamina_left
+	
+	var stamina_percentage_used : float = 1 - (stamina_left/stamina_time)
+	animated_sprite.speed_scale =1 + stamina_percentage_used * 1.5
 	
 	var movement_dir : int = 0
 	if Input.is_action_pressed("Up"):
