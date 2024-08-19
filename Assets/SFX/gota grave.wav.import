@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dbodb062j85p0"
+path="res://.godot/imported/gota grave.wav-0033a243f089e4f9a809bbfd69a2ee14.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/gota grave.wav"
+dest_files=["res://.godot/imported/gota grave.wav-0033a243f089e4f9a809bbfd69a2ee14.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
