@@ -201,7 +201,7 @@ position = Vector2(1683, 207)
 scale = Vector2(3.01224, 3.13745)
 
 [node name="Rata" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_vuuig")]
-position = Vector2(45, -87)
+position = Vector2(61, 301)
 camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Rata"]
