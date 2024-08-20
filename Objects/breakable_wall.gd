@@ -7,6 +7,11 @@ func _process(_delta):
 		$BaseSprite.visible = true
 	$RayCast2D.enabled = false
 
+func _physics_process(_delta):
+	for b in $Area2D.get_overlapping_bodies():
+		if b is Cat:
+			_on_area_2d_body_entered(b)
+
 func _on_area_2d_body_entered(body):
 	if not body is Cat:
 		return
