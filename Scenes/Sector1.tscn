@@ -22,6 +22,7 @@ size = Vector2(86, 34)
 size = Vector2(20, 73)
 
 [sub_resource type="Gradient" id="Gradient_5jcua"]
+offsets = PackedFloat32Array(0, 0.878173)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jwwjt"]
@@ -111,7 +112,7 @@ position = Vector2(-436, -125)
 [node name="NE" type="Node2D" parent="."]
 
 [node name="Food" parent="NE" instance=ExtResource("3_pnj2x")]
-position = Vector2(1739, -18)
+position = Vector2(1751, -18)
 num = 3
 
 [node name="Polygon2D" type="Polygon2D" parent="NE"]
@@ -268,6 +269,34 @@ tile_set = ExtResource("3_rkddq")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1171, 287)
 scale = Vector2(3.14766, 3.14766)
+texture = SubResource("GradientTexture2D_jwwjt")
+
+[node name="PointLight2D6" type="PointLight2D" parent="."]
+position = Vector2(1070, 496)
+scale = Vector2(1.595, 1.595)
+color = Color(0.913725, 1, 0.917647, 1)
+energy = 0.52
+texture = SubResource("GradientTexture2D_jwwjt")
+
+[node name="PointLight2D7" type="PointLight2D" parent="."]
+position = Vector2(1071, 143)
+scale = Vector2(1.595, 1.595)
+color = Color(0.913725, 1, 0.917647, 1)
+energy = 0.52
+texture = SubResource("GradientTexture2D_jwwjt")
+
+[node name="PointLight2D8" type="PointLight2D" parent="."]
+position = Vector2(1426, -177)
+scale = Vector2(3.14766, 3.14766)
+color = Color(0.674064, 1, 0.736705, 1)
+energy = 0.64
+texture = SubResource("GradientTexture2D_jwwjt")
+
+[node name="PointLight2D9" type="PointLight2D" parent="."]
+position = Vector2(181, 239)
+scale = Vector2(3.14766, 3.14766)
+color = Color(0.866667, 1, 0.87451, 1)
+energy = 0.87
 texture = SubResource("GradientTexture2D_jwwjt")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]

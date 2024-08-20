@@ -96,8 +96,8 @@ animations = [{
 }]
 
 [node name="Nixon" type="AnimatedSprite2D"]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(0.65098, 1, 0.658824, 0)
 sprite_frames = SubResource("SpriteFrames_ywxlr")
 animation = &"Stream"
-frame_progress = 0.630473
+frame_progress = 0.607291
 script = ExtResource("2_0pm37")

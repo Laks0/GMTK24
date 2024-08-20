@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://xjhisd6bhh5k"]
+[gd_scene load_steps=6 format=3 uid="uid://xjhisd6bhh5k"]
 
 [ext_resource type="Texture2D" uid="uid://be47ykvy2se22" path="res://Assets/Visuales/Comidas.png" id="1_40pl4"]
 [ext_resource type="Script" path="res://Objects/food.gd" id="1_p2cn0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jjvf"]
 size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_5jcua"]
+offsets = PackedFloat32Array(0, 0.878173)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lom3n"]
+gradient = SubResource("Gradient_5jcua")
+fill = 1
+fill_from = Vector2(0.504274, 0.5)
+fill_to = Vector2(0, 1)
 
 [node name="Food" type="Area2D"]
 collision_layer = 0
@@ -27,5 +37,9 @@ offset_top = -11.0
 offset_right = 31.0
 offset_bottom = 12.0
 text = "0/10"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1.0625, 1.0625)
+texture = SubResource("GradientTexture2D_lom3n")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
