@@ -36,6 +36,9 @@ func _ready():
 	var my_random_number = rng.randf_range(1.0,3.0)
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("restart"):
+		die()
+	
 	############
 	# Movimiento
 	############
@@ -88,7 +91,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func regular_movement(delta : float):
-	#DUDA: no se si nestear el input asi esta bien
 	if Input.is_action_pressed("Right"):
 		dir = 1
 	elif Input.is_action_pressed("Left"):

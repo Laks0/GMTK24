@@ -18,7 +18,7 @@ func _on_area_2d_body_entered(body):
 	if not body is Cat:
 		return
 	
-	if body.chasing:
+	if body.chasing or body.enlarging:
 		$ruidos_madera.play()
 		$Area2D.set_deferred("monitoring", false)
 		$CollisionShape2D.set_deferred("disabled", true)

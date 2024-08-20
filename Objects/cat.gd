@@ -30,6 +30,8 @@ var alert := false
 
 var size_tween : Tween = null
 
+var enlarging := false
+
 func _ready():
 	$idle_timer.wait_time = rng.randf_range(0.5,1.5)
 	idle_stream.set_volume_db(linear_to_db(0.1))
@@ -45,6 +47,11 @@ func _physics_process(delta):
 	
 	velocity.y += gravity_acceleration * delta
 	move_and_slide()
+	
+	if size_tween != null:
+		enlarging = size_tween.is_running() and scale_factor > scale.x
+	else:
+		enlarging = false
 
 func follow_rat(delta):
 	animated_sprite.play("correr")
