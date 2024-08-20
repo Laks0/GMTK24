@@ -16,6 +16,8 @@ var on := false
 
 @onready var water_stream_loop = $water_stream_loop
 @onready var gas_stream_loop = $gas_stream_loop
+@onready var water_stream_init = $water_stream_init
+@onready var gas_stream_init = $gas_stream_init
 
 func _ready():
 	water_stream_loop.set_volume_db(linear_to_db(0.1))
@@ -37,9 +39,11 @@ func _on_body_entered(body):
 func turn_on():
 	if scale_type==ScaleTypes.ENLARGE:
 		$water_stream_loop.play()
+		$water_stream_init.play()
 		create_tween().tween_property($water_stream_loop,"volume_db",linear_to_db(1.0),1.0)
 	else:
 		$gas_stream_loop.play()
+		$gas_stream_init.play()
 		create_tween().tween_property($gas_stream_loop,"volume_db",linear_to_db(1.0),1.0)
 	
 	on = true
