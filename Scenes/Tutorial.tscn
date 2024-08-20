@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=4 uid="uid://cbkqaax4gofbu"]
+[gd_scene load_steps=16 format=4 uid="uid://cbkqaax4gofbu"]
 
 [ext_resource type="TileSet" uid="uid://ba4wbbw13hom1" path="res://Assets/Visuales/tile_set.tres" id="1_64soe"]
 [ext_resource type="Texture2D" uid="uid://cqt62miwkjg67" path="res://Assets/Visuales/decorativos.png" id="2_dicre"]
 [ext_resource type="TileSet" uid="uid://dbm6cvy63xbs8" path="res://Scenes/deco_fondo.tres" id="2_j51qj"]
 [ext_resource type="PackedScene" uid="uid://dx0cq3st44k6t" path="res://Objects/Rata.tscn" id="3_ynq4m"]
 [ext_resource type="PackedScene" uid="uid://b1diuin38ai25" path="res://Objects/Switch.tscn" id="4_ox150"]
+[ext_resource type="PackedScene" uid="uid://dwjsanustayjy" path="res://Objects/Nixon.tscn" id="6_8bpxq"]
 [ext_resource type="PackedScene" uid="uid://dt0cwqnulxssx" path="res://Objects/Scaler.tscn" id="6_87nqr"]
 [ext_resource type="PackedScene" path="res://Objects/Watergate.tscn" id="6_y0546"]
 [ext_resource type="PackedScene" uid="uid://b0cdb1gdsc558" path="res://Objects/Cat.tscn" id="7_6apfp"]
@@ -187,11 +188,15 @@ kind = 1
 position = Vector2(496, 301)
 scale_type = 1
 switch = NodePath("../Switch2")
-on_time = 2.0
+on_time = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scaler2"]
 position = Vector2(0, 18)
 shape = SubResource("RectangleShape2D_bxufo")
+
+[node name="Nixon" parent="Scaler2" instance=ExtResource("6_8bpxq")]
+position = Vector2(0, 6)
+rotation = -3.14159
 
 [node name="Cat" parent="." node_paths=PackedStringArray("rat") instance=ExtResource("7_6apfp")]
 position = Vector2(498, 313)

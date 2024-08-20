@@ -8,6 +8,7 @@ func open():
 	$Door.play("Open")
 	$Stream.play("Fall")
 	create_tween().tween_property($Stream, "modulate:a", 1, .5)
+	$GPUParticles2D.emitting = true
 
 func close():
 	$Door.play_backwards("Open")

@@ -1,0 +1,103 @@
+[gd_scene load_steps=16 format=3 uid="uid://dwjsanustayjy"]
+
+[ext_resource type="Texture2D" uid="uid://ceyfljh3kq6ci" path="res://Assets/Visuales/Gas-Sheet.png" id="1_endgc"]
+[ext_resource type="Script" path="res://Objects/nixon.gd" id="2_0pm37"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkwu1"]
+atlas = ExtResource("1_endgc")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1825"]
+atlas = ExtResource("1_endgc")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4p5e"]
+atlas = ExtResource("1_endgc")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n5dx"]
+atlas = ExtResource("1_endgc")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5oln"]
+atlas = ExtResource("1_endgc")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciaei"]
+atlas = ExtResource("1_endgc")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki5ga"]
+atlas = ExtResource("1_endgc")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3wuu"]
+atlas = ExtResource("1_endgc")
+region = Rect2(32, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2058q"]
+atlas = ExtResource("1_endgc")
+region = Rect2(64, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uuf4"]
+atlas = ExtResource("1_endgc")
+region = Rect2(96, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxyaj"]
+atlas = ExtResource("1_endgc")
+region = Rect2(128, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrq4q"]
+atlas = ExtResource("1_endgc")
+region = Rect2(160, 64, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ywxlr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkwu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1825")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4p5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n5dx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5oln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciaei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki5ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3wuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2058q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uuf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxyaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrq4q")
+}],
+"loop": true,
+"name": &"Stream",
+"speed": 10.0
+}]
+
+[node name="Nixon" type="AnimatedSprite2D"]
+modulate = Color(0.65098, 1, 0.658824, 0)
+sprite_frames = SubResource("SpriteFrames_ywxlr")
+animation = &"Stream"
+frame_progress = 0.607291
+script = ExtResource("2_0pm37")
