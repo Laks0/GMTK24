@@ -45,11 +45,7 @@ func turn_on():
 		pass
 	on = true
 	open.emit()
-	await get_tree().create_timer(on_time).timeout
-	$water_stream_loop.stop()
-	$gas_stream_loop.stop()
-	on = false
-	visible = false
+	$Timer.start(on_time)
 
 #TODO:SOLO LOOP PERO CON UN FADE IN Y CON FADE OUT 
 func _on_water_stream_intro_finished():
@@ -57,3 +53,9 @@ func _on_water_stream_intro_finished():
 
 func _on_gas_stream_intro_finished():
 	gas_stream_loop.play()
+
+func _on_timer_timeout():
+	$water_stream_loop.stop()
+	$gas_stream_loop.stop()
+	on = false
+	close.emit()

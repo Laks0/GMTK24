@@ -22,6 +22,10 @@ stream = ExtResource("4_3bxip")
 [node name="gas_stream_loop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_p26vy")
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="water_stream_intro" to="." method="_on_water_stream_intro_finished"]
 [connection signal="finished" from="gas_stream_intro" to="." method="_on_gas_stream_intro_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
