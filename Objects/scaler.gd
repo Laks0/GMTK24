@@ -18,6 +18,10 @@ var on := false
 @onready var gas_stream_loop = $gas_stream_loop
 
 func _ready():
+	water_stream_loop.set_volume_db(linear_to_db(0.1))
+	water_stream_intro.set_volume_db(linear_to_db(0.1))
+	gas_stream_loop.set_volume_db(linear_to_db(0.1))
+	gas_stream_intro.set_volume_db(linear_to_db(0.1))
 	if is_instance_valid(switch):
 		switch.turned.connect(turn_on)
 
@@ -42,10 +46,12 @@ func turn_on():
 	on = true
 	open.emit()
 	await get_tree().create_timer(on_time).timeout
+	$water_stream_loop.stop()
+	$gas_stream_loop.stop()
 	on = false
 	visible = false
 
-
+#TODO:SOLO LOOP PERO CON UN FADE IN Y CON FADE OUT 
 func _on_water_stream_intro_finished():
 	water_stream_loop.play()
 

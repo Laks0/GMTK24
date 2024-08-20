@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b0cdb1gdsc558"]
+[gd_scene load_steps=33 format=3 uid="uid://b0cdb1gdsc558"]
 
 [ext_resource type="Texture2D" uid="uid://crrbx6pd4xype" path="res://Assets/Visuales/gato.jpg" id="1_0mnln"]
 [ext_resource type="Script" path="res://Objects/cat.gd" id="1_au8ox"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://crmtxn0wi6jiy" path="res://Assets/SFX/gato_enojado_1.wav" id="12_rko78"]
 [ext_resource type="AudioStream" uid="uid://cl7btc3hoibo" path="res://Assets/SFX/gato_enojado_2.wav" id="13_sq26g"]
 [ext_resource type="AudioStream" uid="uid://k4ej1ns75lq1" path="res://Assets/SFX/gato_confundido.wav" id="14_6kxjd"]
+[ext_resource type="AudioStream" uid="uid://bb1ku51qc62wa" path="res://Assets/SFX/gato_alerta.wav" id="15_5l0dx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pys83"]
 atlas = ExtResource("2_1wkj1")
@@ -128,12 +129,11 @@ stream_4/stream = ExtResource("8_wvmr8")
 stream_5/stream = ExtResource("9_00ibq")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oy4fa"]
-streams_count = 5
+streams_count = 4
 stream_0/stream = ExtResource("10_tllaa")
 stream_1/stream = ExtResource("11_lcwms")
 stream_2/stream = ExtResource("12_rko78")
 stream_3/stream = ExtResource("13_sq26g")
-stream_4/stream = ExtResource("14_6kxjd")
 
 [node name="Cat" type="CharacterBody2D"]
 collision_mask = 13
@@ -209,6 +209,12 @@ max_distance = 500.0
 
 [node name="chase_stream" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_oy4fa")
+
+[node name="confused_stream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_6kxjd")
+
+[node name="surprise_stream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_5l0dx")
 
 [node name="idle_timer" type="Timer" parent="."]
 wait_time = 3.25
