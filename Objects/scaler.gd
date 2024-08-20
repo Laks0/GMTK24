@@ -17,9 +17,6 @@ var on := false
 @onready var water_stream_loop = $water_stream_loop
 @onready var gas_stream_loop = $gas_stream_loop
 
-
-
-
 func _ready():
 	water_stream_loop.set_volume_db(linear_to_db(0.1))
 	gas_stream_loop.set_volume_db(linear_to_db(0.1))
@@ -41,14 +38,16 @@ func turn_on():
 	if scale_type==ScaleTypes.ENLARGE:
 		$water_stream_loop.play()
 		create_tween().tween_property($water_stream_loop,"volume_db",linear_to_db(1.0),1.0)
-		pass
 	else:
 		$gas_stream_loop.play()
 		create_tween().tween_property($gas_stream_loop,"volume_db",linear_to_db(1.0),1.0)
-		pass
+	
 	on = true
 	open.emit()
 	$Timer.start(on_time)
+	
+	for body in get_overlapping_bodies():
+		_on_body_entered(body)
 
 #TODO:SOLO LOOP PERO CON UN FADE IN Y CON FADE OUT 2
 
