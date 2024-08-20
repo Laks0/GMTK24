@@ -64,7 +64,7 @@ func _physics_process(delta):
 		if dir == 1:
 			animated_sprite.flip_h = false
 	
-	var trying_to_climb : bool = Input.is_action_pressed("Climb") or ((not is_on_floor()) and Input.is_action_pressed("Jump") and not jumping)
+	var trying_to_climb := Input.is_action_pressed("Climb") or ((not is_on_floor()) and Input.is_action_pressed("Jump") and not jumping)
 	if trying_to_climb and $BLeftCast.is_colliding() and can_start_climb():
 		climbing = true
 		climbing_dir = -1
@@ -150,7 +150,8 @@ func climbing_movement(delta : float):
 	# Botones para dejar de trepar
 	if Input.is_action_just_pressed("Right") and climbing_dir == -1\
 		or Input.is_action_just_pressed("Left") and climbing_dir == 1\
-		or Input.is_action_just_pressed("Jump"):
+		or Input.is_action_just_pressed("Jump")\
+		or is_on_floor():
 		climbing = false
 	
 	# Si te quedás sin pared

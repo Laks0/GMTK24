@@ -1,6 +1,9 @@
 extends Area2D
 class_name Scaler
 
+signal open
+signal close
+
 enum ScaleTypes {ENLARGE, REDUCE}
 @export var scale_type : ScaleTypes
 
@@ -17,7 +20,6 @@ var on := false
 func _ready():
 	if is_instance_valid(switch):
 		switch.turned.connect(turn_on)
-	visible = false
 
 func _on_body_entered(body):
 	if not on:

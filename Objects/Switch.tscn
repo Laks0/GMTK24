@@ -1,10 +1,92 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1diuin38ai25"]
+[gd_scene load_steps=13 format=3 uid="uid://b1diuin38ai25"]
 
 [ext_resource type="Script" path="res://Objects/switch.gd" id="1_3xuir"]
+[ext_resource type="Texture2D" uid="uid://dcc5tw1x0o0em" path="res://Assets/Visuales/Palancas-Sheet.png" id="2_5xcy7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxmr8"]
+atlas = ExtResource("2_5xcy7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22l2x"]
+atlas = ExtResource("2_5xcy7")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_goerj"]
+atlas = ExtResource("2_5xcy7")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_risrp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxmr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22l2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_goerj")
+}],
+"loop": false,
+"name": &"ON",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8fph"]
+atlas = ExtResource("2_5xcy7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14js1"]
+atlas = ExtResource("2_5xcy7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0vbk"]
+atlas = ExtResource("2_5xcy7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsxwc"]
+atlas = ExtResource("2_5xcy7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnaof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8fph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14js1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0vbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsxwc")
+}],
+"loop": false,
+"name": &"ON",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7bgd"]
+size = Vector2(28, 28)
 
 [node name="Switch" type="Area2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_3xuir")
 
+[node name="Switch" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_risrp")
+animation = &"ON"
+
+[node name="Valve" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_rnaof")
+animation = &"ON"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_g7bgd")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="turned" from="." to="." method="_on_turned"]
