@@ -1,9 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://dt0cwqnulxssx"]
+[gd_scene load_steps=6 format=3 uid="uid://dt0cwqnulxssx"]
 
 [ext_resource type="Script" path="res://Objects/scaler.gd" id="1_3m30d"]
+[ext_resource type="AudioStream" uid="uid://lpti5ok8col6" path="res://Assets/SFX/agua_intro.wav" id="2_jc111"]
+[ext_resource type="AudioStream" uid="uid://csb0rkuiqepn8" path="res://Assets/SFX/gas_intro.wav" id="3_gal7h"]
+[ext_resource type="AudioStream" uid="uid://dpdlglsp36rtc" path="res://Assets/SFX/agua_loop.wav" id="4_3bxip"]
+[ext_resource type="AudioStream" uid="uid://cj1l1dgqpu2ea" path="res://Assets/SFX/gas_loop.wav" id="4_p26vy"]
 
 [node name="Scaler" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_3m30d")
 
+[node name="water_stream_intro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jc111")
+
+[node name="gas_stream_intro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gal7h")
+
+[node name="water_stream_loop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3bxip")
+
+[node name="gas_stream_loop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_p26vy")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="water_stream_intro" to="." method="_on_water_stream_intro_finished"]
+[connection signal="finished" from="gas_stream_intro" to="." method="_on_gas_stream_intro_finished"]

@@ -16,6 +16,9 @@ class_name Cat
 @export var cat_height : int = 64
 @onready var animated_sprite : AnimatedSprite2D = $animated_sprite
 
+@onready var idle_stream = $idle_stream
+@onready var chase_stream = $chase_stream
+
 var patroll_dir : int = 1
 
 var scale_factor : float = 1
@@ -24,8 +27,15 @@ var chasing := false
 
 var size_tween : Tween = null
 
+func _ready():
+	idle_stream.set_volume_db(linear_to_db(0.1))
+	chase_stream.set_volume_db(linear_to_db(0.1))
+
+
 func _physics_process(delta):
 	$VisionCast.target_position = global_position.direction_to(rat.position) * vision_distance * scale_factor
+	
+	
 	
 	if chasing:
 		follow_rat(delta)
@@ -78,6 +88,7 @@ func patroll(delta):
 	# Detección de la rata
 	if can_see_rat():
 		chasing = true
+		chase_stream.play()
 
 func loose_focus():
 	await get_tree().create_timer(2).timeout
@@ -118,3 +129,16 @@ func _on_scale_timer_timeout():
 func _on_hit_box_body_entered(body):
 	if body is Rata:
 		body.die()
+
+
+
+
+
+func _on_idle_timer_timeout():
+	if not chasing:
+		idle_stream.play()
+
+
+func _on_chase_timer_timeout():
+	if chasing:
+		chase_stream.play()

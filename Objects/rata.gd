@@ -26,8 +26,14 @@ var jumping := false
 
 @export var camera : Camera2D
 
+@onready var jump_audio = $jump_audio
+@onready var background_audio = $background_audio
+
+var rng = RandomNumberGenerator.new()
 func _ready():
 	DeathHandler.load_point(self)
+	jump_audio.set_volume_db(linear_to_db(0.1))
+	var my_random_number = rng.randf_range(1.0,3.0)
 
 func _physics_process(delta):
 	############
@@ -44,6 +50,7 @@ func _physics_process(delta):
 		animated_sprite.speed_scale = 1
 		
 		if jumping:
+			#audio_stream_player.
 			animated_sprite.play("Jump")
 		elif not is_on_floor():
 			animated_sprite.play("Falling")
@@ -88,6 +95,7 @@ func regular_movement(delta : float):
 	
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y -= jump_speed
+		jump_audio.play()
 		jumping = true
 		
 		await get_tree().create_timer(jumping_animation_time).timeout
@@ -176,3 +184,8 @@ func switch_cameras(cam : Camera2D):
 
 func die():
 	get_tree().reload_current_scene()
+
+
+func _on_background_timer_timeout():
+	$background_timer.wait_time = rng.randf_range(15.0,35.0)
+	background_audio.play()

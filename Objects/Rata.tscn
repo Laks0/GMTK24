@@ -1,8 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://dx0cq3st44k6t"]
+[gd_scene load_steps=23 format=3 uid="uid://dx0cq3st44k6t"]
 
 [ext_resource type="Script" path="res://Objects/rata.gd" id="1_c3rt5"]
 [ext_resource type="Texture2D" uid="uid://ddeqtn6yoegeq" path="res://Assets/Visuales/vector-pixel-art-rat-isolated-103769938-1586460681.jpg" id="1_vpego"]
 [ext_resource type="Texture2D" uid="uid://dtvu7i67afmof" path="res://Assets/Visuales/Rata-Sheet.png" id="2_158y6"]
+[ext_resource type="AudioStream" uid="uid://be3vvi2nfgwa6" path="res://Assets/SFX/rata_land.wav" id="4_x71l0"]
+[ext_resource type="AudioStream" uid="uid://cltc0x7e4qe7p" path="res://Assets/SFX/rata_squeak_2.wav" id="5_mfxl5"]
+[ext_resource type="AudioStream" uid="uid://2ruiptlph3hn" path="res://Assets/SFX/gota aguda.wav" id="6_qhvw3"]
+[ext_resource type="AudioStream" uid="uid://dbodb062j85p0" path="res://Assets/SFX/gota grave.wav" id="7_kq33i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uv86g"]
 atlas = ExtResource("2_158y6")
@@ -108,6 +112,17 @@ size = Vector2(12, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpx70"]
 size = Vector2(36, 19)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b4rmt"]
+streams_count = 3
+stream_0/stream = ExtResource("4_x71l0")
+stream_1/stream = ExtResource("5_mfxl5")
+stream_2/stream = ExtResource("4_x71l0")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jw7i7"]
+streams_count = 2
+stream_0/stream = ExtResource("6_qhvw3")
+stream_1/stream = ExtResource("7_kq33i")
+
 [node name="Rata" type="CharacterBody2D" groups=["Rata"]]
 collision_layer = 2
 collision_mask = 15
@@ -182,5 +197,16 @@ collision_mask = 32
 position = Vector2(1, 1.5)
 shape = SubResource("RectangleShape2D_cpx70")
 
+[node name="jump_audio" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_b4rmt")
+
+[node name="background_audio" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_jw7i7")
+
+[node name="background_timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="area_entered" from="detectors/fake_tile_detector" to="." method="_on_fake_tile_detector_area_entered"]
 [connection signal="area_entered" from="detectors/fail_save_detector" to="." method="_on_fail_save_detector_area_entered"]
+[connection signal="timeout" from="background_timer" to="." method="_on_background_timer_timeout"]

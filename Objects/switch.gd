@@ -3,7 +3,6 @@ class_name Switch
 
 enum Activation {RAT, CAT}
 @export var switch_type : Activation
-
 signal turned
 
 func _on_body_entered(body):
