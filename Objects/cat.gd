@@ -26,6 +26,7 @@ var patroll_dir : int = 1
 var scale_factor : float = 1
 
 var chasing := false
+var alert := false
 
 var size_tween : Tween = null
 
@@ -39,7 +40,7 @@ func _physics_process(delta):
 	
 	if chasing:
 		follow_rat(delta)
-	else:
+	elif not alert:
 		patroll(delta)
 	
 	velocity.y += gravity_acceleration * delta
@@ -87,8 +88,15 @@ func patroll(delta):
 	
 	# Detección de la rata
 	if can_see_rat():
-		chasing = true
+		alert = true
+		animated_sprite.play("Alert")
 		$surprise_stream.play()
+		
+		await get_tree().create_timer(.4).timeout
+		chasing = true
+		var dir = sign(rat.position.x - global_position.x)
+		velocity.x = 100 * dir
+		alert = false
 
 func loose_focus():
 	$focus_timer.start()

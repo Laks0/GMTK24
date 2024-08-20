@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dqk7yadd36ajs"
+path="res://.godot/imported/Saran - Intro.ogg-67539faed036f6123055e448f733f0bd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/OST/Saran - Intro.ogg"
+dest_files=["res://.godot/imported/Saran - Intro.ogg-67539faed036f6123055e448f733f0bd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

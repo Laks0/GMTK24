@@ -17,8 +17,8 @@ func _ready():
 	hover_tween = create_tween().set_loops()
 	hover_tween.set_ease(Tween.EASE_IN_OUT)
 	hover_tween.set_trans(Tween.TRANS_SINE)
-	hover_tween.tween_property(self, "position:y", position.y - 10, .7)
-	hover_tween.tween_property(self, "position:y", position.y + 10, .7)
+	hover_tween.tween_property($Sprite2D, "position:y", -10, .7)
+	hover_tween.tween_property($Sprite2D, "position:y", 10, .7)
 
 func _on_body_entered(body):
 	if body is Rata and not got:
