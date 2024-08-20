@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://chj0rabo233m1"]
+[gd_scene load_steps=14 format=3 uid="uid://chj0rabo233m1"]
 
 [ext_resource type="Texture2D" uid="uid://ca34v7bxsjc85" path="res://Assets/Visuales/Catscene-Sheet.png" id="1_h1nd6"]
 [ext_resource type="Script" path="res://Scenes/catscene.gd" id="2_tlvil"]
 [ext_resource type="FontFile" uid="uid://ejkc0xnqxys8" path="res://Assets/GrapeSoda.ttf" id="3_dasa2"]
 [ext_resource type="AudioStream" uid="uid://bgyg8y73enr5t" path="res://Assets/OST/Main Menu - Intro.ogg" id="4_y1t8q"]
 [ext_resource type="AudioStream" uid="uid://dgtjhgmm0tnu" path="res://Assets/OST/Main Menu - Loop.ogg" id="5_neosn"]
+[ext_resource type="AudioStream" uid="uid://dlrdwxbtr4rq6" path="res://Assets/SFX/gato_comiendolasagna.wav" id="6_xtunb"]
+[ext_resource type="AudioStream" uid="uid://cdduon07da3rs" path="res://Assets/SFX/gato_enamorado.wav" id="7_p1xyu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v51ld"]
 atlas = ExtResource("1_h1nd6")
@@ -112,7 +114,16 @@ bus = &"OST"
 
 [node name="Loop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_neosn")
+bus = &"OST"
 parameters/looping = false
 
+[node name="nom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xtunb")
+volume_db = -6.0
+
+[node name="wow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_p1xyu")
+
 [connection signal="animation_finished" from="Control" to="." method="_on_animation_finished"]
+[connection signal="frame_changed" from="Control" to="." method="_on_control_frame_changed"]
 [connection signal="finished" from="Intro" to="." method="_on_intro_finished"]

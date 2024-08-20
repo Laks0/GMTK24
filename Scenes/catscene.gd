@@ -21,3 +21,10 @@ func _process(_delta):
 
 func _on_intro_finished():
 	$Loop.play()
+
+
+func _on_control_frame_changed() -> void:
+	if $Control.frame == 3:
+		$nom.play()
+	if $Control.frame == 4:
+		$wow.play()
