@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://dbm6cvy63xbs8" path="res://Scenes/deco_fondo.tres" id="2_j51qj"]
 [ext_resource type="PackedScene" uid="uid://dx0cq3st44k6t" path="res://Objects/Rata.tscn" id="3_ynq4m"]
 [ext_resource type="PackedScene" uid="uid://b1diuin38ai25" path="res://Objects/Switch.tscn" id="4_ox150"]
-[ext_resource type="PackedScene" path="res://Objects/Nixon.tscn" id="6_8bpxq"]
+[ext_resource type="PackedScene" uid="uid://dwjsanustayjy" path="res://Objects/Nixon.tscn" id="6_8bpxq"]
 [ext_resource type="PackedScene" uid="uid://dt0cwqnulxssx" path="res://Objects/Scaler.tscn" id="6_87nqr"]
 [ext_resource type="PackedScene" path="res://Objects/Watergate.tscn" id="6_y0546"]
 [ext_resource type="PackedScene" uid="uid://b0cdb1gdsc558" path="res://Objects/Cat.tscn" id="7_6apfp"]
@@ -176,7 +176,7 @@ tile_map_data = PackedByteArray("AAAAABcAAwADAAUAAAAAABYAAwAFAAUAAAAAABUAAwAEAAQ
 tile_set = ExtResource("1_64soe")
 
 [node name="Switch" parent="." instance=ExtResource("4_ox150")]
-position = Vector2(625, 68)
+position = Vector2(618, 85)
 
 [node name="Scaler" parent="." node_paths=PackedStringArray("switch") instance=ExtResource("6_87nqr")]
 position = Vector2(578, 280)
@@ -239,7 +239,7 @@ energy = 0.87
 texture = SubResource("GradientTexture2D_dlw2r")
 
 [node name="Food" parent="." instance=ExtResource("10_u0lny")]
-position = Vector2(758, 312)
+position = Vector2(712, 326)
 num = 2
 
 [node name="DecoForeground" type="TileMapLayer" parent="."]
