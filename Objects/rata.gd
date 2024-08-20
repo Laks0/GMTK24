@@ -116,6 +116,7 @@ func regular_movement(delta : float):
 
 func can_start_climb() -> bool:
 	if stamina_left <= 0 or climbing:
+		$stamina_audio.stop()
 		return false
 	if not $ClimbCooldown.is_stopped():
 		return false
@@ -186,6 +187,7 @@ func climbing_movement(delta : float):
 
 func stop_climbing():
 	climbing = false
+	$stamina_audio.stop()
 	$ClimbCooldown.start()
 
 func _on_queso_detector_area_entered(_area):

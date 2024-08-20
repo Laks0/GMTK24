@@ -5,9 +5,9 @@
 [ext_resource type="TileSet" uid="uid://dbm6cvy63xbs8" path="res://Scenes/deco_fondo.tres" id="2_j51qj"]
 [ext_resource type="PackedScene" uid="uid://dx0cq3st44k6t" path="res://Objects/Rata.tscn" id="3_ynq4m"]
 [ext_resource type="PackedScene" uid="uid://b1diuin38ai25" path="res://Objects/Switch.tscn" id="4_ox150"]
-[ext_resource type="PackedScene" uid="uid://dwjsanustayjy" path="res://Objects/Nixon.tscn" id="6_8bpxq"]
+[ext_resource type="PackedScene" path="res://Objects/Nixon.tscn" id="6_8bpxq"]
 [ext_resource type="PackedScene" uid="uid://dt0cwqnulxssx" path="res://Objects/Scaler.tscn" id="6_87nqr"]
-[ext_resource type="PackedScene" uid="uid://bx1y2q88p1htn" path="res://Objects/Watergate.tscn" id="6_y0546"]
+[ext_resource type="PackedScene" path="res://Objects/Watergate.tscn" id="6_y0546"]
 [ext_resource type="PackedScene" uid="uid://b0cdb1gdsc558" path="res://Objects/Cat.tscn" id="7_6apfp"]
 [ext_resource type="Script" path="res://Scenes/scene_finish.gd" id="8_8tibt"]
 [ext_resource type="PackedScene" uid="uid://xjhisd6bhh5k" path="res://Objects/Food.tscn" id="10_u0lny"]
@@ -210,14 +210,7 @@ rotation = -3.14159
 
 [node name="Cat" parent="." node_paths=PackedStringArray("rat") instance=ExtResource("7_6apfp")]
 position = Vector2(498, 313)
-gravity_acceleration = null
 rat = NodePath("../Rata")
-vision_distance = null
-patroll_speed = null
-chase_speed = null
-friction = null
-max_height_vision_distance = null
-cat_height = null
 
 [node name="SceneFinish" type="Area2D" parent="."]
 position = Vector2(875, 332)
