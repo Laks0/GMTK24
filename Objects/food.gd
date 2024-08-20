@@ -23,6 +23,8 @@ func _ready():
 func _on_body_entered(body):
 	if body is Rata and not got:
 		# Se agarró la comida
+		$AudioStreamPlayer2D.play()
+		$AudioStreamPlayer2D2.play()
 		got = true
 		var tween := create_tween()
 		hover_tween.kill()
