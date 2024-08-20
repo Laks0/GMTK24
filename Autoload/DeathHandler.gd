@@ -21,6 +21,10 @@ func get_food(num : int):
 	if is_food_gotten(num):
 		return
 	foods_obtained.append(num)
+	
+	await get_tree().create_timer(1).timeout
+	if foods_obtained.size() == 8:
+		get_tree().change_scene_to_file("res://Scenes/Catscene.tscn")
 
 func is_food_gotten(num : int):
 	return foods_obtained.has(num)

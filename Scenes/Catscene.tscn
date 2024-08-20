@@ -1,0 +1,118 @@
+[gd_scene load_steps=12 format=3 uid="uid://chj0rabo233m1"]
+
+[ext_resource type="Texture2D" uid="uid://ca34v7bxsjc85" path="res://Assets/Visuales/Catscene-Sheet.png" id="1_h1nd6"]
+[ext_resource type="Script" path="res://Scenes/catscene.gd" id="2_tlvil"]
+[ext_resource type="FontFile" uid="uid://ejkc0xnqxys8" path="res://Assets/GrapeSoda.ttf" id="3_dasa2"]
+[ext_resource type="AudioStream" uid="uid://bgyg8y73enr5t" path="res://Assets/OST/Main Menu - Intro.ogg" id="4_y1t8q"]
+[ext_resource type="AudioStream" uid="uid://dgtjhgmm0tnu" path="res://Assets/OST/Main Menu - Loop.ogg" id="5_neosn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v51ld"]
+atlas = ExtResource("1_h1nd6")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05q7s"]
+atlas = ExtResource("1_h1nd6")
+region = Rect2(320, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8b3r"]
+atlas = ExtResource("1_h1nd6")
+region = Rect2(640, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yxix"]
+atlas = ExtResource("1_h1nd6")
+region = Rect2(960, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ta8x"]
+atlas = ExtResource("1_h1nd6")
+region = Rect2(1280, 0, 320, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_owqw4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v51ld")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_05q7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8b3r")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_3yxix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ta8x")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.5
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_tlvil")
+
+[node name="Control" type="AnimatedSprite2D" parent="."]
+position = Vector2(250, 160)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_owqw4")
+autoplay = "default"
+speed_scale = 1.3
+centered = false
+offset = Vector2(-125, -80)
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.849303, 0.849303, 0, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 112.0
+offset_top = -31.0
+offset_right = 223.0
+offset_bottom = 31.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dasa2")
+theme_override_font_sizes/font_size = 61
+text = "WIN!"
+
+[node name="Credits" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -192.0
+offset_right = -24.0
+offset_bottom = 192.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dasa2")
+theme_override_font_sizes/font_size = 35
+text = "By Teo, Seba, Nacho, and Lakso
+
+In loving memory of Inón. Keep chopping on heaven's door."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Intro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_y1t8q")
+autoplay = true
+bus = &"OST"
+
+[node name="Loop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_neosn")
+parameters/looping = false
+
+[connection signal="animation_finished" from="Control" to="." method="_on_animation_finished"]
+[connection signal="finished" from="Intro" to="." method="_on_intro_finished"]
