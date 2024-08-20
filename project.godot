@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Tutorial.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DeathHandler="*res://Autoload/DeathHandler.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -31,6 +35,10 @@ folder_colors={
 "res://Objects/": "pink",
 "res://Scenes/": "purple"
 }
+
+[global_group]
+
+Rata=""
 
 [input]
 

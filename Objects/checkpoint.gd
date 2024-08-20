@@ -1,4 +1,5 @@
 extends Area2D
+class_name Checkpoint
 
 @export var camera_rect : Polygon2D
 
@@ -27,3 +28,5 @@ func _on_body_entered(body):
 	new_camera.limit_left   = limit_left
 	new_camera.limit_right  = limit_right
 	body.switch_cameras(new_camera)
+	
+	DeathHandler.save_point(get_path())

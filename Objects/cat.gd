@@ -81,7 +81,8 @@ func patroll(delta):
 
 func loose_focus():
 	await get_tree().create_timer(2).timeout
-	chasing = false
+	if not can_see_rat():
+		chasing = false
 
 func can_see_rat() -> bool:
 	if (not $VisionCast.is_colliding()) or (not $VisionCast.get_collider() is Rata):
@@ -113,3 +114,7 @@ func start_size_animation():
 func _on_scale_timer_timeout():
 	scale_factor = 1
 	start_size_animation()
+
+func _on_hit_box_body_entered(body):
+	if body is Rata:
+		body.die()

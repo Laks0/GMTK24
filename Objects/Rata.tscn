@@ -108,7 +108,7 @@ size = Vector2(12, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpx70"]
 size = Vector2(36, 19)
 
-[node name="Rata" type="CharacterBody2D"]
+[node name="Rata" type="CharacterBody2D" groups=["Rata"]]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_c3rt5")

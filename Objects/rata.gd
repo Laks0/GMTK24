@@ -26,6 +26,9 @@ var jumping := false
 
 @export var camera : Camera2D
 
+func _ready():
+	DeathHandler.load_point(self)
+
 func _physics_process(delta):
 	############
 	# Movimiento
@@ -170,4 +173,6 @@ func switch_cameras(cam : Camera2D):
 		cam.make_current()
 		camera.queue_free()
 		camera = cam)
-	
+
+func die():
+	get_tree().reload_current_scene()
