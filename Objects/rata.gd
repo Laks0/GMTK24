@@ -132,7 +132,7 @@ func climbing_movement(delta : float):
 	$StaminaBar.max_value = stamina_time
 	$StaminaBar.value = stamina_left
 	
-	if(stamina_left<=0.1):
+	if(stamina_left<=1.26):
 		$stamina_audio.play()
 	
 	var stamina_percentage_used : float = 1 - (stamina_left/stamina_time)

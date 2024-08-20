@@ -228,6 +228,7 @@ stream = SubResource("AudioStreamRandomizer_jw7i7")
 
 [node name="stamina_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_gsymh")
+volume_db = -6.0
 
 [node name="die_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_5070h")
