@@ -40,7 +40,7 @@ func turn_on():
 		gas_stream_intro.play()
 		pass
 	on = true
-	visible = true
+	open.emit()
 	await get_tree().create_timer(on_time).timeout
 	on = false
 	visible = false
