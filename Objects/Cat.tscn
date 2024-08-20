@@ -217,7 +217,12 @@ autostart = true
 [node name="chase_timer" type="Timer" parent="."]
 autostart = true
 
+[node name="focus_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="ScaleTimer" to="." method="_on_scale_timer_timeout"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="timeout" from="idle_timer" to="." method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="chase_timer" to="." method="_on_chase_timer_timeout"]
+[connection signal="timeout" from="focus_timer" to="." method="_on_focus_timer_timeout"]
