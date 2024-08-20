@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfv222hw17k8a"]
+
+[ext_resource type="AudioStream" uid="uid://dqk7yadd36ajs" path="res://Assets/OST/Saran - Intro.ogg" id="1_u7dkk"]
+[ext_resource type="Script" path="res://Autoload/ost.gd" id="2_1bshj"]
+[ext_resource type="AudioStream" uid="uid://ctc4271605isy" path="res://Assets/OST/Saran - Loop.ogg" id="3_mu16m"]
+
+[node name="Ost" type="AudioStreamPlayer"]
+stream = ExtResource("1_u7dkk")
+bus = &"OST"
+parameters/looping = false
+script = ExtResource("2_1bshj")
+loop = ExtResource("3_mu16m")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

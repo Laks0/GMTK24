@@ -10,3 +10,4 @@ func _on_intro_finished():
 
 func _on_audio_stream_player_finished():
 	get_tree().change_scene_to_file("res://Scenes/Tutorial.tscn")
+	Ost.play()
