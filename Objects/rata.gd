@@ -51,13 +51,18 @@ func _physics_process(delta):
 		
 		if jumping:
 			#audio_stream_player.
+			$continous_loop_rata_audio.stop()
 			animated_sprite.play("Jump")
 		elif not is_on_floor():
+			$continous_loop_rata_audio.stop()
 			animated_sprite.play("Falling")
 		elif dir == 0:
+			$continous_loop_rata_audio.stop()
 			animated_sprite.play("idle")
 		else:
 			animated_sprite.play("caminar")
+			if not $continous_loop_rata_audio.playing:
+				$continous_loop_rata_audio.play()
 		
 		if dir == -1:
 			animated_sprite.flip_h = true
@@ -209,7 +214,12 @@ func _on_background_timer_timeout():
 
 
 func _on_animated_sprite_frame_changed():
-	if $animated_sprite.frame==2 and $animated_sprite.animation=="caminar":
-		$right_steps_rata_audio.play()
-	elif $animated_sprite.frame==4 and $animated_sprite.animation=="caminar":
-		$left_steps_rata_audio.play()
+	if jumping:
+		$continous_loop_rata_audio.stop()
+	if climbing:
+		$continous_loop_rata_audio.stop()
+		if $animated_sprite.frame==2 and $animated_sprite.animation=="caminar":
+			$right_steps_rata_audio.play()
+		elif $animated_sprite.frame==4 and $animated_sprite.animation=="caminar":
+			$left_steps_rata_audio.play()
+	
