@@ -19,9 +19,11 @@ stream = ExtResource("2_b6xq7")
 
 [node name="water_stream_loop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_3bxip")
+volume_db = -8.0
 
 [node name="gas_stream_loop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_p26vy")
+volume_db = -5.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
