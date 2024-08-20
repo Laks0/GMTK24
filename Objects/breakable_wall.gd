@@ -8,6 +8,8 @@ func _process(_delta):
 	$RayCast2D.enabled = false
 
 func _physics_process(_delta):
+	if not $Area2D.monitoring:
+		return
 	for b in $Area2D.get_overlapping_bodies():
 		if b is Cat:
 			_on_area_2d_body_entered(b)
