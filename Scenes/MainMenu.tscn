@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://6bnemj3lq3tp" path="res://Assets/Visuales/Menu.png" id="1_cnrxj"]
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_g3o8d"]
 [ext_resource type="Texture2D" uid="uid://dmn2kbxi5ey8b" path="res://Assets/Visuales/Start-sheet.png" id="2_bm7ib"]
-[ext_resource type="AudioStream" uid="uid://d1ag24wvfjprs" path="res://Assets/SFX/start.wav" id="4_vklkf"]
+[ext_resource type="AudioStream" uid="uid://bloc4ipm718cg" path="res://Assets/SFX/start.wav" id="4_vklkf"]
 [ext_resource type="AudioStream" uid="uid://bgyg8y73enr5t" path="res://Assets/OST/Main Menu - Intro.ogg" id="5_wwe6l"]
 [ext_resource type="AudioStream" uid="uid://dgtjhgmm0tnu" path="res://Assets/OST/Main Menu - Loop.ogg" id="6_md76t"]
 
