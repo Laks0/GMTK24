@@ -25,7 +25,7 @@ var chasing := false
 var size_tween : Tween = null
 
 func _physics_process(delta):
-	$VisionCast.target_position = global_position.direction_to(rat.position) * vision_distance * scale_factor
+	$VisionCast.target_position = (global_position.direction_to(rat.position) * vision_distance) / scale_factor
 	
 	if chasing:
 		follow_rat(delta)

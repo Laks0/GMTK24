@@ -1,0 +1,100 @@
+[gd_scene load_steps=15 format=3 uid="uid://bx1y2q88p1htn"]
+
+[ext_resource type="Script" path="res://Objects/watergate.gd" id="1_0rtre"]
+[ext_resource type="Texture2D" uid="uid://xa3pwhpbk07y" path="res://Assets/Visuales/Compuerta-sheet.png" id="1_ioor2"]
+[ext_resource type="Texture2D" uid="uid://cyihqja8mxsox" path="res://Assets/Visuales/Cascada-sheet.png" id="2_tlun5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c380b"]
+atlas = ExtResource("1_ioor2")
+region = Rect2(0, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25gqg"]
+atlas = ExtResource("1_ioor2")
+region = Rect2(24, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv8iu"]
+atlas = ExtResource("1_ioor2")
+region = Rect2(48, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5cdy"]
+atlas = ExtResource("1_ioor2")
+region = Rect2(72, 0, 24, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_52ygc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c380b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25gqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lv8iu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5cdy")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhum6"]
+atlas = ExtResource("2_tlun5")
+region = Rect2(64, 0, 32, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5cvv"]
+atlas = ExtResource("2_tlun5")
+region = Rect2(96, 0, 32, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg5u1"]
+atlas = ExtResource("2_tlun5")
+region = Rect2(128, 0, 32, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbnv5"]
+atlas = ExtResource("2_tlun5")
+region = Rect2(160, 0, 32, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn64p"]
+atlas = ExtResource("2_tlun5")
+region = Rect2(192, 0, 32, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_upiqx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhum6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5cvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg5u1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbnv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn64p")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 10.0
+}]
+
+[node name="Watergate" type="Node2D"]
+script = ExtResource("1_0rtre")
+
+[node name="Door" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_52ygc")
+animation = &"Open"
+
+[node name="Stream" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(4, 55)
+sprite_frames = SubResource("SpriteFrames_upiqx")
+animation = &"Fall"
+frame = 1
+frame_progress = 0.552326
