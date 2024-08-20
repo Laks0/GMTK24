@@ -188,7 +188,7 @@ kind = 1
 position = Vector2(496, 301)
 scale_type = 1
 switch = NodePath("../Switch2")
-on_time = 2.0
+on_time = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scaler2"]
 position = Vector2(0, 18)
