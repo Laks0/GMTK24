@@ -78,6 +78,8 @@ func _physics_process(delta):
 	
 	$StaminaBar.visible = climbing
 	
+	velocity.y = clamp(velocity.y, -600, 600)
+	
 	move_and_slide()
 
 func regular_movement(delta : float):
@@ -200,8 +202,6 @@ func switch_cameras(cam : Camera2D):
 func die():
 	$die_audio.play()
 	get_tree().reload_current_scene()
-	
-
 
 func _on_background_timer_timeout():
 	$background_timer.wait_time = rng.randf_range(15.0,35.0)
