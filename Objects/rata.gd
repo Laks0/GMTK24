@@ -74,6 +74,7 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		stamina_left = stamina_time
+		$ClimbCooldown.stop()
 	
 	$StaminaBar.visible = climbing
 	
@@ -91,7 +92,7 @@ func regular_movement(delta : float):
 	if sign(velocity.x) != dir:
 		velocity.x = lerp(velocity.x, 0.0, friction * delta)
 	
-	velocity.y += gravity_acceleration * delta
+	velocity.y += gravity_acceleration * delta * (1 if $ClimbCooldown.is_stopped() else .8)
 	
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y -= jump_speed
@@ -101,20 +102,24 @@ func regular_movement(delta : float):
 		await get_tree().create_timer(jumping_animation_time).timeout
 		jumping = false
 	
-	if not is_on_floor() and not Input.is_action_pressed("Jump"):
-		velocity.y += gravity_acceleration * delta * 2
+	if not is_on_floor() and not Input.is_action_pressed("Jump") and $ClimbCooldown.is_stopped():
+		velocity.y += gravity_acceleration * delta * 1.3
 	if Input.is_action_just_released("Jump") and velocity.y < 0.0:
 		velocity.y = 0
 
 func can_start_climb() -> bool:
 	if stamina_left <= 0 or climbing:
 		return false
+	if not $ClimbCooldown.is_stopped():
+		return false
+	if is_on_floor():
+		return false
 	return true
 
 func climbing_movement(delta : float):
 	stamina_left -= delta
 	if stamina_left <= 0:
-		climbing = false
+		stop_climbing()
 		return
 	
 	$StaminaBar.max_value = stamina_time
@@ -152,20 +157,24 @@ func climbing_movement(delta : float):
 		or Input.is_action_just_pressed("Left") and climbing_dir == 1\
 		or Input.is_action_just_pressed("Jump")\
 		or is_on_floor():
-		climbing = false
+		stop_climbing()
 	
 	# Si te quedás sin pared
 	if climbing_dir == -1 and not $TLeftCast.is_colliding():
-		climbing = false
+		stop_climbing()
 		# Si la parte de abajo sigue tocando una pared, saltamos un poco
 		if $BLeftCast.is_colliding():
 			velocity.y -= 100
 	
 	if climbing_dir == 1 and not $TRightCast.is_colliding():
-		climbing = false
+		stop_climbing()
 		# Si la parte de abajo sigue tocando una pared, saltamos un poco
 		if $BRightCast.is_colliding():
 			velocity.y -= 100
+
+func stop_climbing():
+	climbing = false
+	$ClimbCooldown.start()
 
 func _on_queso_detector_area_entered(_area):
 	get_parent().get_node("reja").queue_free()

@@ -31,11 +31,8 @@ func _ready():
 	idle_stream.set_volume_db(linear_to_db(0.1))
 	chase_stream.set_volume_db(linear_to_db(0.1))
 
-
 func _physics_process(delta):
 	$VisionCast.target_position = (global_position.direction_to(rat.position) * vision_distance) / scale_factor
-	
-	
 	
 	if chasing:
 		follow_rat(delta)
@@ -47,7 +44,7 @@ func _physics_process(delta):
 
 func follow_rat(delta):
 	animated_sprite.play("correr")
-	if not can_see_rat():
+	if not can_see_rat() and $focus_timer.is_stopped():
 		loose_focus()
 	
 	var dir = sign(rat.position.x - global_position.x)
@@ -91,9 +88,7 @@ func patroll(delta):
 		chase_stream.play()
 
 func loose_focus():
-	await get_tree().create_timer(2).timeout
-	if not can_see_rat():
-		chasing = false
+	$focus_timer.start()
 
 func can_see_rat() -> bool:
 	if (not $VisionCast.is_colliding()) or (not $VisionCast.get_collider() is Rata):
@@ -130,15 +125,14 @@ func _on_hit_box_body_entered(body):
 	if body is Rata:
 		body.die()
 
-
-
-
-
 func _on_idle_timer_timeout():
 	if not chasing:
 		idle_stream.play()
 
-
 func _on_chase_timer_timeout():
 	if chasing:
 		chase_stream.play()
+
+func _on_focus_timer_timeout():
+	if not can_see_rat():
+		chasing = false
