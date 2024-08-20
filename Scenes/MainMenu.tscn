@@ -56,17 +56,15 @@ texture_hover = SubResource("AtlasTexture_piw8q")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_vklkf")
-bus = &"SFX"
 
 [node name="Intro" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_wwe6l")
 autoplay = true
-bus = &"OST"
 
 [node name="Loop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_md76t")
-bus = &"OST"
 parameters/looping = false
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="finished" from="Intro" to="." method="_on_intro_finished"]
