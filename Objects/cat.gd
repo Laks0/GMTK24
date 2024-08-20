@@ -19,6 +19,8 @@ class_name Cat
 @onready var idle_stream = $idle_stream
 @onready var chase_stream = $chase_stream
 
+var rng = RandomNumberGenerator.new()
+
 var patroll_dir : int = 1
 
 var scale_factor : float = 1
@@ -28,6 +30,7 @@ var chasing := false
 var size_tween : Tween = null
 
 func _ready():
+	$idle_timer.wait_time = rng.randf_range(0.5,1.5)
 	idle_stream.set_volume_db(linear_to_db(0.1))
 	chase_stream.set_volume_db(linear_to_db(0.1))
 
@@ -85,7 +88,7 @@ func patroll(delta):
 	# Detección de la rata
 	if can_see_rat():
 		chasing = true
-		chase_stream.play()
+		$surprise_stream.play()
 
 func loose_focus():
 	$focus_timer.start()
@@ -126,6 +129,7 @@ func _on_hit_box_body_entered(body):
 		body.die()
 
 func _on_idle_timer_timeout():
+	$idle_timer.wait_time = rng.randf_range(4.5,7.5)
 	if not chasing:
 		idle_stream.play()
 
@@ -135,4 +139,5 @@ func _on_chase_timer_timeout():
 
 func _on_focus_timer_timeout():
 	if not can_see_rat():
+		$confused_stream.play()
 		chasing = false

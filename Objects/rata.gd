@@ -125,8 +125,13 @@ func climbing_movement(delta : float):
 	$StaminaBar.max_value = stamina_time
 	$StaminaBar.value = stamina_left
 	
+	if(stamina_left<=0.1):
+		$stamina_audio.play()
+	
 	var stamina_percentage_used : float = 1 - (stamina_left/stamina_time)
 	animated_sprite.speed_scale =1 + stamina_percentage_used * 1.5
+	
+	
 	
 	var movement_dir : int = 0
 	if Input.is_action_pressed("Up"):
@@ -193,7 +198,9 @@ func switch_cameras(cam : Camera2D):
 		camera = cam)
 
 func die():
+	$die_audio.play()
 	get_tree().reload_current_scene()
+	
 
 
 func _on_background_timer_timeout():
