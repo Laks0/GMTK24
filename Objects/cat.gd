@@ -149,3 +149,15 @@ func _on_focus_timer_timeout():
 	if not can_see_rat():
 		$confused_stream.play()
 		chasing = false
+
+
+func _on_animated_sprite_frame_changed():
+	if  $animated_sprite.animation=="caminar" and $animated_sprite.frame==3:
+		$caminar_gato_right_audio.play() 
+	elif $animated_sprite.animation=="caminar" and $animated_sprite.frame==3:
+		$caminar_gato_left_audio.play()
+
+	if $animated_sprite.animation=="correr" and $animated_sprite.frame==1:
+		$caminar_gato_right_audio.play()
+	elif $animated_sprite.animation=="correr" and $animated_sprite.frame==3:
+		$caminar_gato_left_audio.play()
