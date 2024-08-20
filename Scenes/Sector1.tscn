@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://didsgfgh2xlu1"]
+[gd_scene load_steps=14 format=4 uid="uid://didsgfgh2xlu1"]
 
 [ext_resource type="TileSet" uid="uid://ba4wbbw13hom1" path="res://Assets/Visuales/tile_set.tres" id="1_pkr1x"]
 [ext_resource type="PackedScene" uid="uid://dx0cq3st44k6t" path="res://Objects/Rata.tscn" id="2_vuuig"]
 [ext_resource type="PackedScene" uid="uid://b0cdb1gdsc558" path="res://Objects/Cat.tscn" id="3_fnfak"]
+[ext_resource type="PackedScene" uid="uid://xjhisd6bhh5k" path="res://Objects/Food.tscn" id="3_pnj2x"]
 [ext_resource type="TileSet" uid="uid://dbm6cvy63xbs8" path="res://Scenes/deco_fondo.tres" id="3_rkddq"]
 [ext_resource type="PackedScene" uid="uid://dt0cwqnulxssx" path="res://Objects/Scaler.tscn" id="4_58lag"]
 [ext_resource type="PackedScene" uid="uid://b1diuin38ai25" path="res://Objects/Switch.tscn" id="5_qdvej"]
@@ -36,6 +37,14 @@ tile_set = ExtResource("1_pkr1x")
 
 [node name="SE" type="Node2D" parent="."]
 position = Vector2(1111, 527)
+
+[node name="Food2" parent="SE" instance=ExtResource("3_pnj2x")]
+position = Vector2(59, -207)
+num = 4
+
+[node name="Food" parent="SE" instance=ExtResource("3_pnj2x")]
+position = Vector2(853, -178)
+num = 1
 
 [node name="Cat" parent="SE" node_paths=PackedStringArray("rat") instance=ExtResource("3_fnfak")]
 position = Vector2(-376, 22)
@@ -86,7 +95,14 @@ camera_rect = NodePath("../Checkpoint/Polygon2D")
 position = Vector2(109, -77)
 camera_rect = NodePath("../Checkpoint/Polygon2D")
 
+[node name="Food2" parent="E" instance=ExtResource("3_pnj2x")]
+position = Vector2(-436, -125)
+
 [node name="NE" type="Node2D" parent="."]
+
+[node name="Food" parent="NE" instance=ExtResource("3_pnj2x")]
+position = Vector2(1739, -18)
+num = 3
 
 [node name="Polygon2D" type="Polygon2D" parent="NE"]
 visible = false
@@ -141,6 +157,10 @@ camera_rect = NodePath("../Polygon2D")
 visible = false
 polygon = PackedVector2Array(336, -31, 334, -294, 1209, -293, 1212, -70)
 
+[node name="Food" parent="N" instance=ExtResource("3_pnj2x")]
+position = Vector2(370, -141)
+num = 6
+
 [node name="NW" type="Node2D" parent="."]
 
 [node name="Scaler" parent="NW" node_paths=PackedStringArray("switch") instance=ExtResource("4_58lag")]
@@ -176,6 +196,10 @@ rat = NodePath("../../Rata")
 position = Vector2(-491, -202)
 kind = 1
 
+[node name="Food" parent="NW" instance=ExtResource("3_pnj2x")]
+position = Vector2(-1029, -337)
+num = 5
+
 [node name="Centro" type="Node2D" parent="."]
 
 [node name="Checkpoint" parent="Centro" node_paths=PackedStringArray("camera_rect") instance=ExtResource("8_7i1jq")]
@@ -203,7 +227,7 @@ position = Vector2(1683, 207)
 scale = Vector2(3.01224, 3.13745)
 
 [node name="Rata" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_vuuig")]
-position = Vector2(1150, -179)
+position = Vector2(41, 317)
 camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Rata"]

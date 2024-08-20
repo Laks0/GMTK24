@@ -49,11 +49,7 @@ func turn_on():
 		pass
 	on = true
 	open.emit()
-	await get_tree().create_timer(on_time).timeout
-	$water_stream_loop.stop()
-	$gas_stream_loop.stop()
-	on = false
-	visible = false
+	$Timer.start(on_time)
 
 #TODO:SOLO LOOP PERO CON UN FADE IN Y CON FADE OUT 
 func _on_water_stream_intro_finished():
@@ -62,13 +58,8 @@ func _on_water_stream_intro_finished():
 func _on_gas_stream_intro_finished():
 	gas_stream_loop.play()
 
-func fade_out(stream_player):
-	# tween music volume down to 0
-	tween_out.interpolate_property(stream_player, "volume_db", 0, -80, transition_duration, transition_type, Tween.EASE_IN, 0)
-	tween_out.start()
-	tween_out.interpolate_property
-	# when the tween ends, the music will be stopped
-
-func _on_TweenOut_tween_completed(object, key):
-	# stop the music -- otherwise it continues to run at silent volume
-	object.stop()
+func _on_timer_timeout():
+	$water_stream_loop.stop()
+	$gas_stream_loop.stop()
+	on = false
+	close.emit()
