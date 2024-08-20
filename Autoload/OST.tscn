@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfv222hw17k8a"]
+[gd_scene load_steps=4 format=3 uid="uid://dw70oer0vuyky"]
 
 [ext_resource type="AudioStream" uid="uid://dqk7yadd36ajs" path="res://Assets/OST/Saran - Intro.ogg" id="1_u7dkk"]
 [ext_resource type="Script" path="res://Autoload/ost.gd" id="2_1bshj"]
