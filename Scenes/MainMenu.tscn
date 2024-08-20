@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhypmjf8bfegs"]
+[gd_scene load_steps=10 format=3 uid="uid://dhypmjf8bfegs"]
 
 [ext_resource type="Texture2D" uid="uid://6bnemj3lq3tp" path="res://Assets/Visuales/Menu.png" id="1_cnrxj"]
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_g3o8d"]
 [ext_resource type="Texture2D" uid="uid://dmn2kbxi5ey8b" path="res://Assets/Visuales/Start-sheet.png" id="2_bm7ib"]
+[ext_resource type="AudioStream" uid="uid://d1ag24wvfjprs" path="res://Assets/SFX/start.wav" id="4_vklkf"]
+[ext_resource type="AudioStream" uid="uid://bgyg8y73enr5t" path="res://Assets/OST/Main Menu - Intro.ogg" id="5_wwe6l"]
+[ext_resource type="AudioStream" uid="uid://dgtjhgmm0tnu" path="res://Assets/OST/Main Menu - Loop.ogg" id="6_md76t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lc5k2"]
 atlas = ExtResource("2_bm7ib")
@@ -51,4 +54,16 @@ texture_normal = SubResource("AtlasTexture_lc5k2")
 texture_pressed = SubResource("AtlasTexture_5o246")
 texture_hover = SubResource("AtlasTexture_piw8q")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vklkf")
+
+[node name="Intro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wwe6l")
+autoplay = true
+
+[node name="Loop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_md76t")
+parameters/looping = false
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="finished" from="Intro" to="." method="_on_intro_finished"]

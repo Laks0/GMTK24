@@ -68,6 +68,7 @@ position = Vector2(120, -27)
 [node name="Scaler" parent="SE" node_paths=PackedStringArray("switch") instance=ExtResource("4_58lag")]
 position = Vector2(194, 1)
 switch = NodePath("../Switch")
+on_time = 3.0
 
 [node name="Watergate" parent="SE/Scaler" instance=ExtResource("7_d3ssn")]
 position = Vector2(-13, -32)
