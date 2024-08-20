@@ -61,9 +61,11 @@ stream = ExtResource("4_vklkf")
 [node name="Intro" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_wwe6l")
 autoplay = true
+bus = &"OST"
 
 [node name="Loop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_md76t")
+bus = &"OST"
 parameters/looping = false
 
 [node name="SFX" type="Button" parent="."]
