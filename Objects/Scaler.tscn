@@ -13,15 +13,21 @@ on_time = 1.0
 
 [node name="water_stream_init" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_ttb3q")
+bus = &"SFX"
 
 [node name="gas_stream_init" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_b6xq7")
+bus = &"SFX"
 
 [node name="water_stream_loop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_3bxip")
+volume_db = -8.0
+bus = &"SFX"
 
 [node name="gas_stream_loop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_p26vy")
+volume_db = -5.0
+bus = &"SFX"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

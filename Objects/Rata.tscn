@@ -222,16 +222,20 @@ shape = SubResource("RectangleShape2D_cpx70")
 
 [node name="jump_audio" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_b4rmt")
+bus = &"SFX"
 
 [node name="background_audio" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_jw7i7")
+bus = &"SFX"
 
 [node name="stamina_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_gsymh")
 volume_db = -6.0
+bus = &"SFX"
 
 [node name="die_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_5070h")
+bus = &"SFX"
 
 [node name="background_timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -243,12 +247,16 @@ one_shot = true
 
 [node name="continous_loop_rata_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_uh0re")
+volume_db = -8.0
+bus = &"SFX"
 
 [node name="left_steps_rata_audio" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_qi7ex")
+bus = &"SFX"
 
 [node name="right_steps_rata_audio" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_we1qa")
+bus = &"SFX"
 
 [connection signal="frame_changed" from="animated_sprite" to="." method="_on_animated_sprite_frame_changed"]
 [connection signal="area_entered" from="detectors/fake_tile_detector" to="." method="_on_fake_tile_detector_area_entered"]
