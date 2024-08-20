@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cbkqaax4gofbu"]
+[gd_scene load_steps=15 format=4 uid="uid://cbkqaax4gofbu"]
 
 [ext_resource type="TileSet" uid="uid://ba4wbbw13hom1" path="res://Assets/Visuales/tile_set.tres" id="1_64soe"]
 [ext_resource type="Texture2D" uid="uid://cqt62miwkjg67" path="res://Assets/Visuales/decorativos.png" id="2_dicre"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dx0cq3st44k6t" path="res://Objects/Rata.tscn" id="3_ynq4m"]
 [ext_resource type="PackedScene" uid="uid://b1diuin38ai25" path="res://Objects/Switch.tscn" id="4_ox150"]
 [ext_resource type="PackedScene" uid="uid://dt0cwqnulxssx" path="res://Objects/Scaler.tscn" id="6_87nqr"]
-[ext_resource type="PackedScene" path="res://Objects/Watergate.tscn" id="6_y0546"]
+[ext_resource type="PackedScene" uid="uid://bx1y2q88p1htn" path="res://Objects/Watergate.tscn" id="6_y0546"]
 [ext_resource type="PackedScene" uid="uid://b0cdb1gdsc558" path="res://Objects/Cat.tscn" id="7_6apfp"]
 [ext_resource type="Script" path="res://Scenes/scene_finish.gd" id="8_8tibt"]
+[ext_resource type="PackedScene" uid="uid://xjhisd6bhh5k" path="res://Objects/Food.tscn" id="10_u0lny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxufo"]
 size = Vector2(40, 102)
@@ -217,5 +218,9 @@ limit_bottom = 360
 
 [node name="DecoForeground" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_h6h8q")
+
+[node name="Food" parent="." instance=ExtResource("10_u0lny")]
+position = Vector2(758, 312)
+num = 7
 
 [connection signal="body_entered" from="SceneFinish" to="SceneFinish" method="_on_body_entered"]
