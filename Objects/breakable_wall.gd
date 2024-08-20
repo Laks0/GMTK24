@@ -12,6 +12,7 @@ func _on_area_2d_body_entered(body):
 		return
 	
 	if body.chasing:
+		$ruidos_madera.play()
 		$Area2D.set_deferred("monitoring", false)
 		$CollisionShape2D.set_deferred("disabled", true)
 		$BaseSprite.visible = false

@@ -206,3 +206,10 @@ func die():
 func _on_background_timer_timeout():
 	$background_timer.wait_time = rng.randf_range(15.0,35.0)
 	background_audio.play()
+
+
+func _on_animated_sprite_frame_changed():
+	if $animated_sprite.frame==2 and $animated_sprite.animation=="caminar":
+		$right_steps_rata_audio.play()
+	elif $animated_sprite.frame==4 and $animated_sprite.animation=="caminar":
+		$left_steps_rata_audio.play()

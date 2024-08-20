@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dx0cq3st44k6t"]
+[gd_scene load_steps=34 format=3 uid="uid://dx0cq3st44k6t"]
 
 [ext_resource type="Script" path="res://Objects/rata.gd" id="1_c3rt5"]
 [ext_resource type="Texture2D" uid="uid://ddeqtn6yoegeq" path="res://Assets/Visuales/vector-pixel-art-rat-isolated-103769938-1586460681.jpg" id="1_vpego"]
@@ -8,6 +8,14 @@
 [ext_resource type="AudioStream" uid="uid://ckttlv0tsgu4m" path="res://Assets/SFX/rata_slipping.wav" id="7_gsymh"]
 [ext_resource type="AudioStream" uid="uid://dbodb062j85p0" path="res://Assets/SFX/gota grave.wav" id="7_kq33i"]
 [ext_resource type="AudioStream" uid="uid://p1igacgttqxt" path="res://Assets/SFX/rata_muerte.wav" id="8_5070h"]
+[ext_resource type="AudioStream" uid="uid://byh24bigbnir0" path="res://Assets/SFX/rata_step_l_1.wav" id="9_ft5ag"]
+[ext_resource type="AudioStream" uid="uid://daec88iyh0dqc" path="res://Assets/SFX/rata_step_r_1.wav" id="10_lprsn"]
+[ext_resource type="AudioStream" uid="uid://cp4tsq7r33quq" path="res://Assets/SFX/rata_step_l_2.wav" id="11_6q5xd"]
+[ext_resource type="AudioStream" uid="uid://bx8xoy6war5y5" path="res://Assets/SFX/rata_step_r_3.wav" id="11_rtk8h"]
+[ext_resource type="AudioStream" uid="uid://jmqdasvpnojd" path="res://Assets/SFX/rata_step_l_3.wav" id="11_xnydl"]
+[ext_resource type="AudioStream" uid="uid://b47gheb8n7fc7" path="res://Assets/SFX/rata_step_r_2.wav" id="12_4n171"]
+[ext_resource type="AudioStream" uid="uid://c0xohs8v1hn7t" path="res://Assets/SFX/rata_step_l_4.wav" id="12_peogq"]
+[ext_resource type="AudioStream" uid="uid://b04jwm63huol3" path="res://Assets/SFX/rata_step_r_4.wav" id="12_pp87a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uv86g"]
 atlas = ExtResource("2_158y6")
@@ -122,6 +130,20 @@ streams_count = 2
 stream_0/stream = ExtResource("6_qhvw3")
 stream_1/stream = ExtResource("7_kq33i")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qi7ex"]
+streams_count = 4
+stream_0/stream = ExtResource("9_ft5ag")
+stream_1/stream = ExtResource("11_6q5xd")
+stream_2/stream = ExtResource("11_xnydl")
+stream_3/stream = ExtResource("12_peogq")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_we1qa"]
+streams_count = 4
+stream_0/stream = ExtResource("10_lprsn")
+stream_1/stream = ExtResource("12_4n171")
+stream_2/stream = ExtResource("11_rtk8h")
+stream_3/stream = ExtResource("12_pp87a")
+
 [node name="Rata" type="CharacterBody2D" groups=["Rata"]]
 collision_layer = 2
 collision_mask = 15
@@ -132,8 +154,9 @@ max_speed = 400.0
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.38419e-07, 0)
 sprite_frames = SubResource("SpriteFrames_2pigx")
-animation = &"Fell"
+animation = &"caminar"
 autoplay = "idle"
+frame_progress = 0.259433
 
 [node name="Vector-pixel-art-rat-isolated-103769938-1586460681" type="Sprite2D" parent="."]
 visible = false
@@ -216,6 +239,13 @@ autostart = true
 wait_time = 0.2
 one_shot = true
 
+[node name="left_steps_rata_audio" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_qi7ex")
+
+[node name="right_steps_rata_audio" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_we1qa")
+
+[connection signal="frame_changed" from="animated_sprite" to="." method="_on_animated_sprite_frame_changed"]
 [connection signal="area_entered" from="detectors/fake_tile_detector" to="." method="_on_fake_tile_detector_area_entered"]
 [connection signal="area_entered" from="detectors/fail_save_detector" to="." method="_on_fail_save_detector_area_entered"]
 [connection signal="timeout" from="background_timer" to="." method="_on_background_timer_timeout"]
