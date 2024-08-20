@@ -217,15 +217,19 @@ shape = SubResource("RectangleShape2D_82wd3")
 [node name="idle_stream" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ecno0")
 max_distance = 500.0
+bus = &"SFX"
 
 [node name="chase_stream" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_oy4fa")
+bus = &"SFX"
 
 [node name="confused_stream" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_6kxjd")
+bus = &"SFX"
 
 [node name="surprise_stream" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_5l0dx")
+bus = &"SFX"
 
 [node name="idle_timer" type="Timer" parent="."]
 wait_time = 3.25
