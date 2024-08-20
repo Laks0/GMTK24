@@ -259,9 +259,11 @@ one_shot = true
 
 [node name="caminar_gato_right_audio" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_kl4hq")
+bus = &"SFX"
 
 [node name="caminar_gato_left_audio" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ritpk")
+bus = &"SFX"
 
 [connection signal="frame_changed" from="animated_sprite" to="." method="_on_animated_sprite_frame_changed"]
 [connection signal="timeout" from="ScaleTimer" to="." method="_on_scale_timer_timeout"]
