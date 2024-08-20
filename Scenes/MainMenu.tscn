@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhypmjf8bfegs"]
+[gd_scene load_steps=11 format=3 uid="uid://dhypmjf8bfegs"]
 
 [ext_resource type="Texture2D" uid="uid://6bnemj3lq3tp" path="res://Assets/Visuales/Menu.png" id="1_cnrxj"]
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_g3o8d"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bloc4ipm718cg" path="res://Assets/SFX/start.wav" id="4_vklkf"]
 [ext_resource type="AudioStream" uid="uid://bgyg8y73enr5t" path="res://Assets/OST/Main Menu - Intro.ogg" id="5_wwe6l"]
 [ext_resource type="AudioStream" uid="uid://dgtjhgmm0tnu" path="res://Assets/OST/Main Menu - Loop.ogg" id="6_md76t"]
+[ext_resource type="FontFile" uid="uid://ejkc0xnqxys8" path="res://Assets/GrapeSoda.ttf" id="7_h4jwn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lc5k2"]
 atlas = ExtResource("2_bm7ib")
@@ -65,6 +66,28 @@ autoplay = true
 stream = ExtResource("6_md76t")
 parameters/looping = false
 
+[node name="SFX" type="Button" parent="."]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 12.0
+offset_right = 269.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("7_h4jwn")
+text = "MUTE SFX"
+flat = true
+
+[node name="Soundtrack" type="Button" parent="."]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 12.0
+offset_right = 410.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("7_h4jwn")
+text = "MUTE SOUNDRTACK"
+flat = true
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="finished" from="Intro" to="." method="_on_intro_finished"]
+[connection signal="pressed" from="SFX" to="." method="_on_sfx_pressed"]
+[connection signal="pressed" from="Soundtrack" to="." method="_on_soundtrack_pressed"]
