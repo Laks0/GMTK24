@@ -1,6 +1,7 @@
 extends Node
 
 var last_checkpoint : NodePath
+var foods_obtained : Array[int] = []
 
 func save_point(path : NodePath):
 	last_checkpoint = path
@@ -15,3 +16,11 @@ func load_point(rat : Rata):
 	rat.camera.limit_top = checkpoint.limit_top
 	rat.camera.limit_right = checkpoint.limit_right
 	rat.camera.limit_left = checkpoint.limit_left
+
+func get_food(num : int):
+	if is_food_gotten(num):
+		return
+	foods_obtained.append(num)
+
+func is_food_gotten(num : int):
+	return foods_obtained.has(num)
