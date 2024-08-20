@@ -5,6 +5,10 @@ enum Activation {RAT, CAT}
 @export var switch_type : Activation
 signal turned
 
+enum Kind {SWITCH,VALVE}
+@export var kind:Kind 
+var animation:AnimatedSprite2D
+
 func _on_body_entered(body):
 	if switch_type == Activation.CAT and body is Cat:
 		turned.emit()

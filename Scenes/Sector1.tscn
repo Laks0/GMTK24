@@ -3,10 +3,10 @@
 [ext_resource type="TileSet" uid="uid://ba4wbbw13hom1" path="res://Assets/Visuales/tile_set.tres" id="1_pkr1x"]
 [ext_resource type="PackedScene" uid="uid://dx0cq3st44k6t" path="res://Objects/Rata.tscn" id="2_vuuig"]
 [ext_resource type="PackedScene" uid="uid://b0cdb1gdsc558" path="res://Objects/Cat.tscn" id="3_fnfak"]
-[ext_resource type="TileSet" uid="uid://5r5moj5gqkqs" path="res://Scenes/deco_fondo.tres" id="3_rkddq"]
+[ext_resource type="TileSet" uid="uid://dbm6cvy63xbs8" path="res://Scenes/deco_fondo.tres" id="3_rkddq"]
 [ext_resource type="PackedScene" uid="uid://dt0cwqnulxssx" path="res://Objects/Scaler.tscn" id="4_58lag"]
 [ext_resource type="PackedScene" uid="uid://b1diuin38ai25" path="res://Objects/Switch.tscn" id="5_qdvej"]
-[ext_resource type="PackedScene" uid="uid://bx1y2q88p1htn" path="res://Objects/Watergate.tscn" id="7_d3ssn"]
+[ext_resource type="PackedScene" path="res://Objects/Watergate.tscn" id="7_d3ssn"]
 [ext_resource type="PackedScene" uid="uid://c24ogpmfo4q17" path="res://Objects/Checkpoint.tscn" id="8_7i1jq"]
 [ext_resource type="PackedScene" uid="uid://dddbhuabfnl8i" path="res://Objects/CatDespawner.tscn" id="10_qrkes"]
 

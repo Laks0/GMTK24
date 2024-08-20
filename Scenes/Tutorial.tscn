@@ -2,11 +2,11 @@
 
 [ext_resource type="TileSet" uid="uid://ba4wbbw13hom1" path="res://Assets/Visuales/tile_set.tres" id="1_64soe"]
 [ext_resource type="Texture2D" uid="uid://cqt62miwkjg67" path="res://Assets/Visuales/decorativos.png" id="2_dicre"]
-[ext_resource type="TileSet" uid="uid://5r5moj5gqkqs" path="res://Scenes/deco_fondo.tres" id="2_j51qj"]
+[ext_resource type="TileSet" uid="uid://dbm6cvy63xbs8" path="res://Scenes/deco_fondo.tres" id="2_j51qj"]
 [ext_resource type="PackedScene" uid="uid://dx0cq3st44k6t" path="res://Objects/Rata.tscn" id="3_ynq4m"]
 [ext_resource type="PackedScene" uid="uid://b1diuin38ai25" path="res://Objects/Switch.tscn" id="4_ox150"]
 [ext_resource type="PackedScene" uid="uid://dt0cwqnulxssx" path="res://Objects/Scaler.tscn" id="6_87nqr"]
-[ext_resource type="PackedScene" uid="uid://bx1y2q88p1htn" path="res://Objects/Watergate.tscn" id="6_y0546"]
+[ext_resource type="PackedScene" path="res://Objects/Watergate.tscn" id="6_y0546"]
 [ext_resource type="PackedScene" uid="uid://b0cdb1gdsc558" path="res://Objects/Cat.tscn" id="7_6apfp"]
 [ext_resource type="Script" path="res://Scenes/scene_finish.gd" id="8_8tibt"]
 
